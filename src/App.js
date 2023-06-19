@@ -12,6 +12,7 @@ function App() {
 		{ id: 0, title: 'Cabbage' },
 		{ id: 1, title: 'Potato' },
 		{ id: 2, title: 'Whiskey' },
+		{ id: 4, title: 'Fish' },
 	]
 	const isOnline = false
 	return (
@@ -19,8 +20,9 @@ function App() {
 			<Header />
 			{/* {isOnline && <h1>Welcome back, my friend</h1>} */}
 			{isOnline ? <h1>Welcome back, my friend</h1> : <h1>Lets login</h1>}
-			<Section data={moviesData} id='movies' />
+			<Section dadta={moviesData} id='movies' />
 			<Section data={goodsData} title='Goods Section' id='movies' />
+			<Section title='Goods Section' id='movies' />
 		</div>
 	)
 }
