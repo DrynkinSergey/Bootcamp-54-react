@@ -8,7 +8,7 @@ function App() {
 					target='_blank'
 					rel='noopener noreferrer'
 				>
-					React
+					React Project
 				</a>
 			</header>
 		</div>
