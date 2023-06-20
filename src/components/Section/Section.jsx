@@ -1,4 +1,5 @@
 import React from 'react'
+import { Item } from '../Item'
 
 export const Section = props => {
 	console.log(props)
@@ -10,16 +11,12 @@ export const Section = props => {
 
 	return (
 		<section>
-			{/* {!data.length && <h1>You haven't data</h1>} */}
 			<h2>{title}</h2>
 			{data.length > 3 && <h2>You have big list</h2>}
 			<ul>
 				{data.map((item, index) => (
-					<li key={item.id}>
-						{index}.{item.title}
-					</li>
+					<Item key={item.id} title={item.title} />
 				))}
-				{/* <li>{data[0].title}</li> */}
 			</ul>
 
 			<hr />
