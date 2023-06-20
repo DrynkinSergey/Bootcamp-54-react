@@ -3,11 +3,11 @@ import { Users } from './components/Users/Users'
 
 function App() {
 	return (
-		<div>
+		<>
 			<Users users={usersData} />
 
-			<h1 className='card'>Hello from React</h1>
-		</div>
+			<h1 className='wrapper'>Hello from React</h1>
+		</>
 	)
 }
 

@@ -1,18 +1,52 @@
 import PropTypes from 'prop-types'
 import { UserCard } from '../UserCard/UserCard'
-
+import { css, styled } from 'styled-components'
 export const Users = ({ users }) => {
 	return (
-		<div className='wrapper'>
+		<>
+			<Box primary />
+			<Box />
+			<Box secondary />
 			<h1>Users</h1>
-			<ul>
-				{users.map(user => (
-					<UserCard key={user.id} {...user} />
-				))}
-			</ul>
-		</div>
+			<Wrapper>
+				{users.map((user, index) => {
+					return <UserCard index={index} key={user.id} {...user} />
+				})}
+			</Wrapper>
+		</>
 	)
 }
+
+const Box = styled.div`
+	width: 150px;
+	height: 150px;
+	background-color: red;
+	${props =>
+		props.primary &&
+		css`
+			background-color: blue;
+			width: 250px;
+			height: 250px;
+		`}
+	${props =>
+		props.secondary &&
+		css`
+			background-color: black;
+			width: 350px;
+			height: 350px;
+		`}
+`
+const Box2 = styled(Box)`
+	background-color: green;
+`
+
+const Wrapper = styled.ul`
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px 40px;
+`
 
 Users.propTypes = {
 	users: PropTypes.arrayOf(

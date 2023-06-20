@@ -1,20 +1,35 @@
 import React from 'react'
 import './UserCard.css'
-import clsx from 'clsx'
-import s from './UserCard.module.scss'
-export const UserCard = ({ name, id, email, bio, isOpenToWork, skills }) => {
-	const classes = !isOpenToWork ? `${s.name} ${s.red}` : `${s.name} ${s.green}`
+import {
+	StyledBio,
+	StyledCard,
+	StyledName,
+	StyledSkillItem,
+} from './UserCard.styled'
 
+export const UserCard = ({
+	index,
+	name,
+	id,
+	email,
+	bio,
+	isOpenToWork,
+	skills,
+}) => {
+	const bgColor = Math.floor(Math.random() * 16777215).toString(16)
 	return (
-		<li className={s.card_item}>
-			<h1 className={clsx(s.name, isOpenToWork ? s.green : s.red)}>{name}</h1>
+		<StyledCard bg={bgColor} index={index}>
+			<StyledName isopen={isOpenToWork.toString()} id={id}>
+				{name}
+			</StyledName>
 			<h2>{email}</h2>
-			<p className={s.bio}>{bio}</p>
+
+			<StyledBio>{bio}</StyledBio>
 			<ul>
 				{skills.map(skill => (
-					<li key={skill}>{skill}</li>
+					<StyledSkillItem key={skill}>{skill}</StyledSkillItem>
 				))}
 			</ul>
-		</li>
+		</StyledCard>
 	)
 }
