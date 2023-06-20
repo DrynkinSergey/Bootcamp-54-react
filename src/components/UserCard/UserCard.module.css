@@ -1,0 +1,13 @@
+  .card_item{
+    background-color: yellow;
+    font-weight: bold;
+  }
+  .name{
+    font-size: 1rem;
+  }
+  .name.red{
+    color:red;
+  }
+  .name.green{
+    color:green;
+  }

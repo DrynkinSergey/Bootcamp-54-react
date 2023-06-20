@@ -2,7 +2,6 @@ import React from 'react'
 import { Item } from '../Item'
 
 export const Section = props => {
-	console.log(props)
 	const { title = 'BASIC SECTION NAME', data = [], id } = props
 
 	if (!data.length) {
