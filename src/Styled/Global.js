@@ -5,15 +5,16 @@ export const Global = createGlobalStyle`
     --main-color: red;
     --second-color: blue;
   }
-  $main:blue;
 
   body{
     margin:0;
     padding:0;
   }
-  p{
-    padding-left:20px;
+  ul{
+    margin: 0;
+    padding:0;
   }
+ 
   .wrapper{
     color:var(--main-color)
 
