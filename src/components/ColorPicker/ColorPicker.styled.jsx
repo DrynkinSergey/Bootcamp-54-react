@@ -5,7 +5,7 @@ export const StyledBackgroundTheme = styled.div`
 	place-content: center;
 	height: 100vh;
 	transition: background-color 0.5s linear;
-	background-color: ${({ bgColor }) => bgColor};
+	background-color: ${({ bg_color }) => bg_color};
 	width: 100vw;
 `
 export const StyledColorPalette = styled.div`
