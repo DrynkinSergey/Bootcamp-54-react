@@ -16,6 +16,7 @@ export const StyledButton = styled.button`
 	background-color: white;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
+
 	&:hover {
 		background-color: #091ec2;
 		color: white;
@@ -31,7 +32,7 @@ export const StyledCounter = styled.div`
 	min-height: 50vh;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 20px;
 	align-items: center;
 	justify-content: center;
 	width: 40vw;
