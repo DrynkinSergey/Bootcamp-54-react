@@ -20,10 +20,7 @@ export class TodoList extends Component {
 	handleDelete = id => {
 		console.log(id)
 		const newArray = this.state.tasks.filter(el => el.id !== id)
-		// const a = [1, 2, 3, 5, 7, 8]
-		// const newA = a.filter(item => item > 4)
-		// console.log('before =>>', a)
-		// console.log('after =>>', newA)
+
 		this.setState({ tasks: newArray })
 	}
 	handleAddTodo = () => {

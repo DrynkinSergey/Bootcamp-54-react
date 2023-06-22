@@ -6,10 +6,10 @@ import {
 	StyledColor,
 	StyledColorsList,
 } from './ColorPicker.styled'
-
+import colorsData from './../../assets/colors.json'
 export class ColorPicker extends Component {
 	state = {
-		colors: this.props.data,
+		colors: colorsData,
 		currentColor: 'white',
 	}
 

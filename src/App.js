@@ -1,11 +1,11 @@
-import { Employees } from './components/Employees/Employee'
+import { ColorPicker } from './components/ColorPicker/ColorPicker'
 import { RegisterForm } from './components/RegisterForm/RegisterForm'
-import { TodoList } from './components/TodoList/TodoList'
+import { RegisterFormUncontrolled } from './components/RegisterForm/RegisterFormUncontrolled'
 
 function App() {
 	return (
 		<>
-			<Employees />
+			<RegisterFormUncontrolled />
 		</>
 	)
 }
