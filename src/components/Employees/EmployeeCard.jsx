@@ -9,6 +9,7 @@ export const EmployeeCard = ({
 	bio,
 	skills,
 	isOpenToWork,
+	deleteUser,
 }) => {
 	return (
 		<UserCard open={isOpenToWork}>
@@ -22,7 +23,7 @@ export const EmployeeCard = ({
 					</Skill>
 				))}
 			</SkillList>
-			<StyledButton border size='.8rem'>
+			<StyledButton onClick={() => deleteUser(id)} border size='.8rem'>
 				Delete
 			</StyledButton>
 		</UserCard>

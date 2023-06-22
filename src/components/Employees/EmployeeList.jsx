@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { EmployeeCard } from './EmployeeCard'
 
-export const EmployeeList = ({ users = [] }) => {
+export const EmployeeList = ({ users = [], deleteUser }) => {
 	if (!users.length) {
 		return <h1>Немає юзерів для роботи</h1>
 	}
@@ -9,7 +9,7 @@ export const EmployeeList = ({ users = [] }) => {
 	return (
 		<UserList>
 			{users.map(user => (
-				<EmployeeCard {...user} />
+				<EmployeeCard deleteUser={deleteUser} key={user.id} {...user} />
 			))}
 		</UserList>
 	)
