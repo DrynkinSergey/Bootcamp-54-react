@@ -4,14 +4,25 @@ import { StyledInput } from '../RegisterForm/RegisterForm.styled'
 
 const skilsList = ['all', 'react', 'angular', 'vue']
 
-export const EmployeesFilter = ({ onFilterChange, filterStr }) => {
+export const EmployeesFilter = ({
+	onFilterChange,
+	filterStr,
+	openToWork,
+	onChangeCheckboxFilter,
+	activeSkill,
+	onChangeSkill,
+}) => {
 	return (
 		<Filters>
 			<h1>Filters</h1>
 			<Flex>
 				<StyledInput type='text' onChange={onFilterChange} value={filterStr} />
 				<label htmlFor=''>
-					<input type='checkbox' />
+					<input
+						type='checkbox'
+						checked={openToWork}
+						onChange={onChangeCheckboxFilter}
+					/>
 					<span> isAvailable</span>
 				</label>
 			</Flex>
@@ -22,6 +33,8 @@ export const EmployeesFilter = ({ onFilterChange, filterStr }) => {
 							name='radioButtonName'
 							type='radio'
 							value={radioButtonName}
+							checked={radioButtonName === activeSkill}
+							onChange={() => onChangeSkill(radioButtonName)}
 						/>
 						<span> {radioButtonName}</span>
 					</label>
