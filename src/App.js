@@ -6,8 +6,13 @@ import Modal from './components/Modal/Modal'
 import { Counter } from './components/Counter/Counter'
 import { Button } from './components/Button'
 import { FlexContainer } from './components/Counter/Counter.styled'
+import { Message } from './components/Message/Message'
 
 export class App extends Component {
+	static defaultProps = {
+		title: 'Значення котре буде, якщо я не передам пропс тайтл',
+	}
+
 	state = {
 		isOpenModal: false,
 		isLoggedIn: false,
@@ -29,6 +34,7 @@ export class App extends Component {
 	}
 
 	render() {
+		const { message, title } = this.props
 		return (
 			<>
 				{/* <h1>{this.state.value}</h1>
@@ -46,9 +52,13 @@ export class App extends Component {
 						<button onClick={this.toggleModal}>OK</button>
 					</Modal>
 				) : null} */}
-				<FlexContainer>
+				<FlexContainer column={true.toString()}>
+					<h1>{title}</h1>
+					<h1>{message}</h1>
 					<Button cb={this.toggleLogin}>Set data to local storage</Button>
+
 					<Button cb={this.getData}>Get data LS</Button>
+					<Message />
 				</FlexContainer>
 			</>
 		)

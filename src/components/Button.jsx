@@ -17,3 +17,4 @@ export const StyledButton = styled.button`
 		cursor: pointer;
 	}
 `
+const Another = styled(StyledButton)``

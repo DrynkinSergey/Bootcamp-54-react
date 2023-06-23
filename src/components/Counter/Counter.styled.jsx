@@ -6,7 +6,9 @@ export const Flex = styled.div`
 export const FlexContainer = styled(Flex)`
 	min-height: 100vh;
 	justify-content: center;
+	background-color: wheat;
 	align-items: center;
+	flex-direction: ${({ column }) => (column === 'true' ? 'column' : 'row')};
 `
 export const StyledButton = styled.button`
 	padding: 10px 22px;
