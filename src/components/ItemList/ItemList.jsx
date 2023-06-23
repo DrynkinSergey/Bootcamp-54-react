@@ -12,9 +12,10 @@ export const ItemList = ({
 			<ol>
 				{data.map(item => (
 					<li
-						onClick={() =>
-							onItemClick(item.tag === 'books' ? 'films' : 'books', item.id)
-						}
+						// onClick={() =>
+						// 	onItemClick(item.tag === 'books' ? 'films' : 'books', item.id)
+						// }
+						onClick={() => onItemClick(prompt('Enter your tag'), item.id)}
 						key={item.id}
 					>
 						{item.title}
