@@ -1,8 +1,11 @@
 import React from 'react'
 
-export const SelectItem = () => {
+export const SelectItem = ({ selectedValue, onChangeSelectedValue }) => {
 	return (
-		<select>
+		<select
+			value={selectedValue}
+			onChange={e => onChangeSelectedValue(e.target.value)}
+		>
 			<option value='films'>Films</option>
 			<option value='books'>Books</option>
 		</select>

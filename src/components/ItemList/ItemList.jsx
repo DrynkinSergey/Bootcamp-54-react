@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const ItemList = ({ data = [], title = 'My list' }) => {
-	console.log(data)
 	return (
 		<>
 			<h2>{title}</h2>

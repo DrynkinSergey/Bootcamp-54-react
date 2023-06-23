@@ -7,13 +7,9 @@ import { ItemList } from './components/ItemList/ItemList'
 
 export class App extends Component {
 	state = {
-		data: [
-			{ title: 'Harry Potter', id: 0, tag: 'books' },
-			{ title: 'Terminator', id: 1, tag: 'films' },
-			{ title: 'Mafia', id: 1, tag: 'films' },
-			{ title: 'Supernatural', id: 1, tag: 'films' },
-			{ title: 'Don kihot', id: 1, tag: 'books' },
-		],
+		data: [],
+		inputData: '',
+		selectedValue: 'films',
 	}
 
 	getFilteredData = tag => {
@@ -21,16 +17,39 @@ export class App extends Component {
 		return data.filter(item => item.tag === tag)
 	}
 
+	handleChangeInputData = title => {
+		this.setState({ inputData: title })
+	}
+	handleAddItem = title => {
+		this.setState(prevState => ({
+			data: [
+				...prevState.data,
+				{ title, id: crypto.randomUUID(), tag: this.state.selectedValue },
+			],
+		}))
+	}
+	handleChangeSelectedValue = value => {
+		console.log(value)
+		this.setState({ selectedValue: value })
+	}
+
 	render() {
-		const { data } = this.state
+		const { data, inputData, selectedValue } = this.state
 
 		const books = this.getFilteredData('books')
 		const films = this.getFilteredData('films')
 		return (
 			<Wrapper>
 				<Header />
-				<AddItemForm />
-				<SelectItem />
+				<AddItemForm
+					onAddItem={this.handleAddItem}
+					onChangeData={this.handleChangeInputData}
+					inputValue={inputData}
+				/>
+				<SelectItem
+					onChangeSelectedValue={this.handleChangeSelectedValue}
+					selectedValue={selectedValue}
+				/>
 				<ItemList data={books} title='My books list' />
 				<ItemList data={films} title='My films list' />
 			</Wrapper>
