@@ -9,7 +9,7 @@ export class App extends Component {
 	state = {
 		data: [],
 		inputData: '',
-		selectedValue: 'films',
+		selectedValue: 'books',
 	}
 
 	getFilteredData = tag => {
@@ -20,6 +20,14 @@ export class App extends Component {
 	handleChangeInputData = title => {
 		this.setState({ inputData: title })
 	}
+	handleChangeTag = (value, id) => {
+		console.log(value, id)
+		this.setState(prevState => ({
+			data: prevState.data.map(item =>
+				item.id === id ? { ...item, tag: value } : item
+			),
+		}))
+	}
 	handleAddItem = title => {
 		this.setState(prevState => ({
 			data: [
@@ -29,8 +37,12 @@ export class App extends Component {
 		}))
 	}
 	handleChangeSelectedValue = value => {
-		console.log(value)
 		this.setState({ selectedValue: value })
+	}
+	handleDeleteItem = id => {
+		this.setState(prevState => ({
+			data: prevState.data.filter(item => item.id !== id),
+		}))
 	}
 
 	render() {
@@ -50,8 +62,18 @@ export class App extends Component {
 					onChangeSelectedValue={this.handleChangeSelectedValue}
 					selectedValue={selectedValue}
 				/>
-				<ItemList data={books} title='My books list' />
-				<ItemList data={films} title='My films list' />
+				<ItemList
+					onDelete={this.handleDeleteItem}
+					onItemClick={this.handleChangeTag}
+					data={books}
+					title='My books list'
+				/>
+				<ItemList
+					onDelete={this.handleDeleteItem}
+					onItemClick={this.handleChangeTag}
+					data={films}
+					title='My films list'
+				/>
 			</Wrapper>
 		)
 	}
