@@ -29,6 +29,8 @@ export class RegisterForm extends Component {
 	// }
 	handleChangeInput = ({ target }) => {
 		const { name, value } = target
+		console.log(`Ти клацнув на поле ${name}, його значення ${value}`)
+		// this.setState({ [name]: value })
 		this.setState({ [name]: value })
 	}
 	handleCheckboxChange = e => {
