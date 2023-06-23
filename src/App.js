@@ -16,6 +16,7 @@ export class App extends Component {
 	state = {
 		isOpenModal: false,
 		isLoggedIn: false,
+		value: 1,
 		data: {
 			name: 'Alex',
 			age: 45,
@@ -25,6 +26,11 @@ export class App extends Component {
 		this.setState(prevState => ({ isOpenModal: !prevState.isOpenModal }))
 	}
 	toggleLogin = () => {
+		this.setState(
+			prevState => ({ value: 10 }),
+			() => console.log(this.state.value)
+		)
+
 		window.localStorage.setItem('Test', JSON.stringify(this.state.data))
 		this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }))
 	}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
 import todoData from './../../assets/todos.json'
+import { AddTodoForm } from './AddTodoForm'
 export class TodoList extends Component {
 	state = {
 		tasks: todoData,
@@ -46,12 +47,10 @@ export class TodoList extends Component {
 		return (
 			<div>
 				<StyledTodoList>
-					<StyledInput
-						type='text'
-						value={inputValue}
-						onChange={e => this.setState({ inputValue: e.target.value })}
+					<AddTodoForm
+						inputValue={inputValue}
+						handleAddTodo={this.handleAddTodo}
 					/>
-					<StyledButton onClick={this.handleAddTodo}>Add</StyledButton>
 					{tasks.map(item => (
 						<StyledTodo key={item.id}>
 							<input
