@@ -23,7 +23,7 @@ export const EmployeeCard = ({
 					</Skill>
 				))}
 			</SkillList>
-			<StyledButton onClick={() => deleteUser(id)} border size='.8rem'>
+			<StyledButton onClick={() => deleteUser(id)} size='.8rem'>
 				Delete
 			</StyledButton>
 		</UserCard>

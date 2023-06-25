@@ -21,18 +21,11 @@ export class Employees extends Component {
 		this.setState({ users: this.state.users.filter(user => user.id !== id) })
 	}
 	handleChangeSkill = skill => {
-		console.log(skill)
 		this.setState({ activeSkill: skill })
 	}
 
 	getFilteredData = () => {
 		const { users, filterStr, openToWork, activeSkill } = this.state
-		// console.log(
-		// 	['banana', 'apple', 'milk']
-		// 		.map(el => el.length)
-		// 		.filter(el => el > 4)
-		// 		.map(el => 'вчи js')
-		// )
 
 		return users
 			.filter(
