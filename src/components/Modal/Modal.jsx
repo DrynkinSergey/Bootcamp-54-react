@@ -8,10 +8,20 @@ class Modal extends Component {
 	componentWillUnmount() {
 		console.log('UNMOUNT')
 	}
+
+	handleOutsideClick = e => {
+		// console.log('target =====>>> ', e.target)
+		// console.log('currentTarget =====>>> ', e.currentTarget)
+		// console.log(e.target === e.currentTarget)
+		if (e.target === e.currentTarget) {
+			this.props.onClose()
+		}
+	}
+
 	render() {
 		const { onClose, children } = this.props
 		return (
-			<ModalWrapper>
+			<ModalWrapper onClick={this.handleOutsideClick}>
 				<ModalContent>
 					<>
 						<h1>Modal</h1>
