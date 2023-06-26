@@ -10,6 +10,19 @@ export class Employees extends Component {
 		openToWork: false,
 		activeSkill: 'all',
 	}
+	componentDidMount() {
+		console.log('Component was mount')
+	}
+	componentDidUpdate(prevProps, prevState) {
+		// console.log('update')
+		// console.log(`Props =>>>>`, prevProps)
+		// console.log(`State =>>>>`, prevState)
+		if (prevState.users.length !== this.state.users.length) {
+			console.log('Ви змінили массив юзерів')
+		} else {
+			console.log('update')
+		}
+	}
 
 	handleChangeFilter = e => {
 		this.setState({ filterStr: e.target.value })
