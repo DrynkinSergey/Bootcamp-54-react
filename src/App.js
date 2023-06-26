@@ -1,10 +1,11 @@
 import { ColorPicker } from './components/ColorPicker/ColorPicker'
 import { Employees } from './components/Employees/Employee'
-
+import { GitRepos } from './components/GitRepos/GitRepos'
+//https://api.github.com/search/repositories
 function App() {
 	return (
 		<>
-			<Employees />
+			<GitRepos />
 		</>
 	)
 }
