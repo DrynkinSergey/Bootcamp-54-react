@@ -2,14 +2,30 @@ import React, { Component } from 'react'
 import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
 
 class Modal extends Component {
+	state = {
+		value: 0,
+	}
+	intervalID = null
+	timeoutID = null
 	componentDidMount() {
 		console.log('Modal is mount')
-
 		document.addEventListener('keydown', this.handleKeydown)
+
+		this.intervalID = setInterval(() => {
+			console.log(new Date().toLocaleTimeString())
+		}, 1000)
+
+		this.timeoutID = setTimeout(() => {
+			console.log('Hello')
+			this.setState({ value: new Date().toISOString() })
+		}, 3000)
 	}
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this.handleKeydown)
 		console.log('UNMOUNT')
+
+		clearInterval(this.intervalID)
+		clearTimeout(this.timeoutID)
 	}
 
 	handleKeydown = e => {

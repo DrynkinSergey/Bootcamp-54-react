@@ -12,6 +12,16 @@ export class ColorPicker extends Component {
 		colors: colorsData,
 		currentColor: 'white',
 	}
+	componentDidMount() {
+		console.log('Color picker is ready')
+	}
+	componentDidUpdate() {
+		console.log('UPDATE')
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextState.currentColor !== this.state.currentColor
+		// return true
+	}
 
 	handleClick = color => {
 		this.setState({ currentColor: color })
@@ -20,7 +30,6 @@ export class ColorPicker extends Component {
 	render() {
 		const { colors, currentColor } = this.state
 		const { message } = this.props
-		console.log(this.props)
 		return (
 			<StyledBackgroundTheme bg_color={currentColor}>
 				<StyledColorPalette>

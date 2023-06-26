@@ -23,7 +23,7 @@ export class Employees extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate(_, prevState) {
 		// console.log('update')
 		// console.log(`Props =>>>>`, prevProps)
 		// console.log(`State =>>>>`, prevState)
