@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component, PureComponent } from 'react'
 
 import {
 	StyledBackgroundTheme,
@@ -7,6 +7,7 @@ import {
 	StyledColorsList,
 } from './ColorPicker.styled'
 import colorsData from './../../assets/colors.json'
+import { toast } from 'react-toastify'
 export class ColorPicker extends Component {
 	state = {
 		colors: colorsData,
@@ -17,9 +18,16 @@ export class ColorPicker extends Component {
 	}
 	componentDidUpdate() {
 		console.log('UPDATE')
+		toast.info('You change color!')
 	}
+
+	// {} === {}
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.currentColor !== this.state.currentColor
+		// return (
+		// 	nextState.data.user.info.address.city !==
+		// 	this.state.data.user.info.address.city
+		// )
 		// return true
 	}
 
