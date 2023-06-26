@@ -1,9 +1,10 @@
 import { ColorPicker } from './components/ColorPicker/ColorPicker'
+import { Employees } from './components/Employees/Employee'
 
 function App() {
 	return (
 		<>
-			<ColorPicker />
+			<Employees />
 		</>
 	)
 }
