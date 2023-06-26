@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StyledInput } from '../RegisterForm/RegisterForm.styled'
+import { StyledButton } from '../Counter/Counter.styled'
 
 const skilsList = ['all', 'react', 'angular', 'vue']
 
@@ -11,10 +12,15 @@ export const EmployeesFilter = ({
 	onChangeCheckboxFilter,
 	activeSkill,
 	onChangeSkill,
+	toggleModal,
 }) => {
 	return (
 		<Filters>
 			<h1>Filters</h1>
+
+			<StyledButton size='1rem' onClick={toggleModal}>
+				Open Modal
+			</StyledButton>
 			<Flex>
 				<StyledInput type='text' onChange={onFilterChange} value={filterStr} />
 				<label htmlFor=''>

@@ -2,6 +2,8 @@ import { EmployeesFilter } from './EmployeesFilter'
 import { EmployeeList } from './EmployeeList'
 import userData from './../../assets/users.json'
 import { Component } from 'react'
+import Modal from '../Modal/Modal'
+import { StyledButton } from '../Counter/Counter.styled'
 
 export class Employees extends Component {
 	state = {
@@ -9,18 +11,27 @@ export class Employees extends Component {
 		filterStr: '',
 		openToWork: false,
 		activeSkill: 'all',
+		isOpenModal: false,
 	}
 	componentDidMount() {
-		console.log('Component was mount')
+		let users = JSON.parse(window.localStorage.getItem('users'))
+		if (users) {
+			this.setState({ users: users })
+		}
+		if (!users?.length) {
+			this.setState({ users: userData })
+		}
 	}
+
 	componentDidUpdate(prevProps, prevState) {
 		// console.log('update')
 		// console.log(`Props =>>>>`, prevProps)
 		// console.log(`State =>>>>`, prevState)
 		if (prevState.users.length !== this.state.users.length) {
-			console.log('Ви змінили массив юзерів')
+			// console.log('Ви змінили массив юзерів')
+			window.localStorage.setItem('users', JSON.stringify(this.state.users))
 		} else {
-			console.log('update')
+			// console.log('update')
 		}
 	}
 
@@ -51,12 +62,18 @@ export class Employees extends Component {
 				activeSkill === 'all' ? user : user.skills.includes(activeSkill)
 			)
 	}
+
+	toggleModal = () => {
+		this.setState(prevState => ({ isOpenModal: !prevState.isOpenModal }))
+	}
+
 	render() {
 		const { filterStr, openToWork, activeSkill, users } = this.state
 		const filteredData = this.getFilteredData()
 		return (
 			<>
 				<EmployeesFilter
+					toggleModal={this.toggleModal}
 					activeSkill={activeSkill}
 					openToWork={openToWork}
 					filterStr={filterStr}
@@ -65,6 +82,14 @@ export class Employees extends Component {
 					onChangeCheckboxFilter={this.handleChangeAvailableUsers}
 				/>
 				<EmployeeList deleteUser={this.handleDelete} users={filteredData} />
+				{this.state.isOpenModal ? (
+					<Modal onClose={this.toggleModal}>
+						<h1>Hello it is our modal</h1>
+						<StyledButton size='1rem' onClick={this.toggleModal}>
+							CLOSE
+						</StyledButton>
+					</Modal>
+				) : null}
 			</>
 		)
 	}
