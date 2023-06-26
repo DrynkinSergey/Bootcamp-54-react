@@ -4,11 +4,20 @@ import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
 class Modal extends Component {
 	componentDidMount() {
 		console.log('Modal is mount')
+
+		document.addEventListener('keydown', this.handleKeydown)
 	}
 	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeydown)
 		console.log('UNMOUNT')
 	}
 
+	handleKeydown = e => {
+		if (e.key === 'Escape') {
+			this.props.onClose()
+		}
+		console.log(e)
+	}
 	handleOutsideClick = e => {
 		// console.log('target =====>>> ', e.target)
 		// console.log('currentTarget =====>>> ', e.currentTarget)
