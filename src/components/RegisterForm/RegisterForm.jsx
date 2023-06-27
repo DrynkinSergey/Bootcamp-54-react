@@ -18,15 +18,6 @@ export class RegisterForm extends Component {
 		this.setState(INITIAL_STATE)
 	}
 
-	// handleChangeName = e => {
-	// 	this.setState({ name: e.target.value })
-	// }
-	// handleChangePassword = e => {
-	// 	this.setState({ password: e.target.value })
-	// }
-	// handleChangeEmail = e => {
-	// 	this.setState({ email: e.target.value })
-	// }
 	handleChangeInput = ({ target }) => {
 		const { name, value } = target
 		this.setState({ [name]: value })
@@ -126,31 +117,3 @@ export class RegisterForm extends Component {
 		)
 	}
 }
-
-// export const RegisterForm = () => {
-// 	return (
-// 		<FlexContainer>
-// 			<StyledLoginForm>
-// 				<StyledTitle>Register</StyledTitle>
-// 				<StyledLabel>
-// 					Name:
-// 					<StyledInput type='text' />
-// 				</StyledLabel>
-// 				<br />
-// 				<StyledLabel>
-// 					Email:
-// 					<StyledInput type='text' />
-// 				</StyledLabel>
-// 				<br />
-
-// 				<StyledLabel>
-// 					Password:
-// 					<StyledInput type='password' />
-// 				</StyledLabel>
-
-// 				<br />
-// 				<StyledButton>Register</StyledButton>
-// 			</StyledLoginForm>
-// 		</FlexContainer>
-// 	)
-// }

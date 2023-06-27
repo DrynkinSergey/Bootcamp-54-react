@@ -21,14 +21,8 @@ export class ColorPicker extends Component {
 		toast.info('You change color!')
 	}
 
-	// {} === {}
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.currentColor !== this.state.currentColor
-		// return (
-		// 	nextState.data.user.info.address.city !==
-		// 	this.state.data.user.info.address.city
-		// )
-		// return true
 	}
 
 	handleClick = color => {
@@ -58,17 +52,3 @@ export class ColorPicker extends Component {
 		)
 	}
 }
-
-// export const ColorPicker = ({ colors = [] }) => {
-// return (
-// 	<StyledBackgroundTheme>
-// 		<StyledColorPalette>
-// 			<StyledColorsList>
-// 				{colorsData.map(item => (
-// 					<StyledColor key={item.id}>{item.color}</StyledColor>
-// 				))}
-// 			</StyledColorsList>
-// 		</StyledColorPalette>
-// 	</StyledBackgroundTheme>
-// )
-// }

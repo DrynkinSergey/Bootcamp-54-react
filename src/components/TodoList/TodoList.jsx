@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
-import axios from 'axios'
 import { getAllTodos } from '../../services/todoApi'
 import { toast } from 'react-toastify'
 export class TodoList extends Component {
@@ -38,23 +37,6 @@ export class TodoList extends Component {
 			toast.error('Try again...')
 		}
 	}
-
-	// getData = () => {
-	// 	const { page } = this.state
-	// 	axios
-	// 		.get(`https://jsonplaceholder.typicode.com/todos`, {
-	// 			params: {
-	// 				_page: page,
-	// 				_limit: 3,
-	// 			},
-	// 		})
-	// 		.then(res => {
-	// 			console.log(res)
-	// 			this.setState(prevState => ({
-	// 				tasks: [...prevState.tasks, ...res.data],
-	// 			}))
-	// 		})
-	// }
 
 	handleLoadMore = () => {
 		this.setState(prevState => ({ page: prevState.page + 1 }))
@@ -128,22 +110,3 @@ export class TodoList extends Component {
 		)
 	}
 }
-
-// export const TodoList = () => {
-// return (
-// 	<div>
-// 		<StyledTodoList>
-// 			<StyledInput type='text' />
-// 			<StyledButton>Add</StyledButton>
-// 			{[].map(item => (
-// 				<StyledTodo>
-// 					<input type='checkbox' />
-// 					<span>todo</span>
-// 					<StyledButton size='18px'>Delete</StyledButton>
-// 				</StyledTodo>
-// 			))}
-// 			<button>Clear</button>
-// 		</StyledTodoList>
-// 	</div>
-// )
-// }

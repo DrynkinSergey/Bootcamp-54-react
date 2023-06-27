@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-	CounterStyled,
 	Flex,
 	FlexContainer,
 	StyledButton,
@@ -17,13 +16,11 @@ export class Counter extends Component {
 		this.setState({ step: +stepValue })
 	}
 	increment = () => {
-		// this.setState({ counter: this.state.counter + 1 })
 		this.setState(prevState => ({
 			counter: prevState.counter + prevState.step,
 		}))
 	}
 	decrement = () => {
-		// this.setState({ counter: this.state.counter - 1 })
 		this.setState(prevState => ({
 			counter: prevState.counter - prevState.step,
 		}))
@@ -54,22 +51,3 @@ export class Counter extends Component {
 		)
 	}
 }
-
-// export const Counter = () => {
-// 	const handleClick = e => {
-// 		counter++
-// 		console.log(counter)
-// 	}
-// return (
-// 	<FlexContainer>
-// 		<StyledCounter>
-// 			<h1>{counter}</h1>
-// 			<Flex>
-// 				<StyledButton onClick={handleClick}>minus</StyledButton>
-// 				<StyledButton>reset</StyledButton>
-// 				<StyledButton onClick={handleClick}>plus</StyledButton>
-// 			</Flex>
-// 		</StyledCounter>
-// 	</FlexContainer>
-// )
-// }

@@ -35,9 +35,6 @@ class Modal extends Component {
 		console.log(e)
 	}
 	handleOutsideClick = e => {
-		// console.log('target =====>>> ', e.target)
-		// console.log('currentTarget =====>>> ', e.currentTarget)
-		// console.log(e.target === e.currentTarget)
 		if (e.target === e.currentTarget) {
 			this.props.onClose()
 		}
