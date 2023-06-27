@@ -1,11 +1,42 @@
 import React, { Component } from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
-import todoData from './../../assets/todos.json'
+import axios from 'axios'
 export class TodoList extends Component {
 	state = {
-		tasks: todoData,
+		tasks: [],
 		inputValue: '',
+		page: 1,
+	}
+	componentDidMount() {
+		this.getData()
+	}
+	componentDidUpdate(prevProps, prevState) {
+		const { page } = this.state
+		if (page !== prevState.page) {
+			this.getData()
+		}
+	}
+
+	getData = () => {
+		const { page } = this.state
+		axios
+			.get(`https://jsonplaceholder.typicode.com/todos`, {
+				params: {
+					_page: page,
+					_limit: 3,
+				},
+			})
+			.then(res => {
+				console.log(res)
+				this.setState(prevState => ({
+					tasks: [...prevState.tasks, ...res.data],
+				}))
+			})
+	}
+
+	handleLoadMore = () => {
+		this.setState(prevState => ({ page: prevState.page + 1 }))
 	}
 
 	handleToggleTodo = id => {
@@ -59,7 +90,9 @@ export class TodoList extends Component {
 								checked={item.completed}
 								onChange={() => this.handleToggleTodo(item.id)}
 							/>
-							<span>{item.todo}</span>
+							<span>
+								{item.id}.{item.title}
+							</span>
 							<StyledButton
 								size='18px'
 								onClick={() => this.handleDelete(item.id)}
@@ -68,7 +101,7 @@ export class TodoList extends Component {
 							</StyledButton>
 						</StyledTodo>
 					))}
-					<button onClick={this.handleResetTodos}>Clear</button>
+					<button onClick={this.handleLoadMore}>Load More</button>
 				</StyledTodoList>
 			</div>
 		)
