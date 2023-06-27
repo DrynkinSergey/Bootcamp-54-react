@@ -11,6 +11,6 @@ root.render(
 	<>
 		<App />
 		<Global />
-		<ToastContainer autoClose={500} />
+		<ToastContainer autoClose={1000} />
 	</>
 )

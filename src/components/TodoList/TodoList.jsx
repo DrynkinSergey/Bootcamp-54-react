@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
 import axios from 'axios'
+import { getAllTodos } from '../../services/todoApi'
+import { toast } from 'react-toastify'
 export class TodoList extends Component {
 	state = {
 		tasks: [],
@@ -11,29 +13,48 @@ export class TodoList extends Component {
 	componentDidMount() {
 		this.getData()
 	}
+
 	componentDidUpdate(prevProps, prevState) {
 		const { page } = this.state
 		if (page !== prevState.page) {
 			this.getData()
+			toast.info('Data was update')
 		}
 	}
 
-	getData = () => {
+	getData = async () => {
 		const { page } = this.state
-		axios
-			.get(`https://jsonplaceholder.typicode.com/todos`, {
-				params: {
-					_page: page,
-					_limit: 3,
-				},
+		try {
+			const { data } = await getAllTodos({
+				_page: page,
 			})
-			.then(res => {
-				console.log(res)
-				this.setState(prevState => ({
-					tasks: [...prevState.tasks, ...res.data],
-				}))
-			})
+			console.log(data)
+
+			this.setState(prevState => ({
+				tasks: [...prevState.tasks, ...data],
+			}))
+		} catch (error) {
+			console.log(error)
+			toast.error('Try again...')
+		}
 	}
+
+	// getData = () => {
+	// 	const { page } = this.state
+	// 	axios
+	// 		.get(`https://jsonplaceholder.typicode.com/todos`, {
+	// 			params: {
+	// 				_page: page,
+	// 				_limit: 3,
+	// 			},
+	// 		})
+	// 		.then(res => {
+	// 			console.log(res)
+	// 			this.setState(prevState => ({
+	// 				tasks: [...prevState.tasks, ...res.data],
+	// 			}))
+	// 		})
+	// }
 
 	handleLoadMore = () => {
 		this.setState(prevState => ({ page: prevState.page + 1 }))
