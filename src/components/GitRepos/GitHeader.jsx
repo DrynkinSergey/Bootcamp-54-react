@@ -5,9 +5,7 @@ export class GitHeader extends Component {
 	state = {
 		value: '',
 	}
-	// handleChangeValue = ({ target: { value } }) => {
-	// 	this.setState({ value })
-	// }
+
 	handleChangeValue = e => {
 		this.setState({ value: e.target.value })
 	}
