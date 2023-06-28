@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useRef, useState } from 'react'
 import { INITIAL_STATE } from '../../helpers/constants'
 import { FlexContainer, StyledButton } from '../Counter/Counter.styled'
 import {
@@ -9,6 +9,11 @@ import {
 } from './RegisterForm.styled'
 
 export const RegisterForm = () => {
+	const nameRef = useRef()
+	useEffect(() => {
+		// document.getElementById('inputName').focus()
+		nameRef.current.focus()
+	}, [])
 	const [userData, setUserData] = useState({ ...INITIAL_STATE })
 	const { age, username, email, password, agree, gender } = userData
 
@@ -41,6 +46,7 @@ export const RegisterForm = () => {
 					Name:
 					<StyledInput
 						type='text'
+						id='inputName'
 						name='username'
 						value={username}
 						onChange={handleChangeInput}
@@ -51,6 +57,7 @@ export const RegisterForm = () => {
 					Email:
 					<StyledInput
 						type='email'
+						ref={nameRef}
 						name='email'
 						value={email}
 						onChange={handleChangeInput}
