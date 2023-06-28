@@ -1,8 +1,9 @@
+import { GitRepos } from './components/GitRepos/GitRepos'
 import { TodoList } from './components/TodoList/TodoList'
 function App() {
 	return (
 		<>
-			<TodoList />
+			<GitRepos />
 		</>
 	)
 }

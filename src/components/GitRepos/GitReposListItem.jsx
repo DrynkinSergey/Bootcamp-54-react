@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyledCard, StyledRepoImg } from './GitRepos.styled'
-import Modal from '../Modal/Modal'
+import { Modal } from '../Modal/Modal'
 
 export class GitReposListItem extends Component {
 	state = {
