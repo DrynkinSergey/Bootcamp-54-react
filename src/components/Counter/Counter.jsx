@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import {
 	Flex,
 	FlexContainer,
@@ -9,6 +9,27 @@ import {
 export const Counter = () => {
 	const [counter, setCounter] = useState(0)
 	const [step, setStep] = useState(1)
+
+	useEffect(() => {
+		console.log('Mount')
+	}, [])
+	useEffect(() => {
+		console.log('Ти змінив лічильник або крок')
+	}, [counter, step])
+	useEffect(() => {
+		console.log('Ти змінив тільки крок')
+	}, [step])
+
+	// componentDidUpdate(prevProps, prevState) {
+	// 	if(prevState.counter !== this.state.counter){
+	// console.log('Ти змінив лічильник')
+	// if(prevState.step !== this.state.step){
+	// console.log('Ти змінив step')
+	// }
+	// 	}
+	// componentDidMount() {
+	// 	console.log('Mount')
+	//  }
 
 	// console.log(counter)
 
@@ -31,7 +52,6 @@ export const Counter = () => {
 	const reset = () => {
 		// this.setState({ counter: 0, step: 1 })
 		setCounter(0)
-		setStep(1)
 	}
 	return (
 		<FlexContainer>

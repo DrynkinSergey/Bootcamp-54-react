@@ -19,13 +19,18 @@ export const RegisterForm = () => {
 
 	const handleChangeInput = ({ target }) => {
 		const { name, value } = target
-		console.log(name, value)
-		// this.setState({ [name]: value })
-		setUserData(prev => ({ ...prev, [name]: value })) // {username: 123, password: qwe}
+		// setUserData(prev => {
+		// 	return { ...prev, [name]: value }
+		// })
+		setUserData(prev => {
+			return { ...prev, [name]: value }
+		})
 	}
 	const handleCheckboxChange = e => {
 		// this.setState({ agree: !this.state.agree })
-		setUserData(prev => ({ ...prev, agree: !prev.agree }))
+		setUserData(prev => {
+			return { ...prev, agree: !prev.agree }
+		})
 	}
 
 	return (
