@@ -1,10 +1,8 @@
-import { ColorPicker } from './components/ColorPicker/ColorPicker'
-import { Counter } from './components/Counter/Counter'
-import { RegisterForm } from './components/RegisterForm/RegisterForm'
+import { TodoList } from './components/TodoList/TodoList'
 function App() {
 	return (
 		<>
-			<ColorPicker />
+			<TodoList />
 		</>
 	)
 }
