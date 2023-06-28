@@ -48,7 +48,9 @@ export const Counter = () => {
 				<Flex>
 					<StyledButton onClick={decrement}>minus</StyledButton>
 					<StyledButton onClick={reset}>reset</StyledButton>
-					<StyledButton onClick={increment}>plus</StyledButton>
+					<StyledButton onClick={() => setCounter(prev => prev + 1)}>
+						plus
+					</StyledButton>
 				</Flex>
 			</StyledCounter>
 		</FlexContainer>

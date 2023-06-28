@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { INITIAL_STATE } from '../../helpers/constants'
 import { FlexContainer, StyledButton } from '../Counter/Counter.styled'
 import {
@@ -8,112 +8,218 @@ import {
 	StyledTitle,
 } from './RegisterForm.styled'
 
-export class RegisterForm extends Component {
-	state = {
-		...INITIAL_STATE,
-	}
-	handleSubmit = e => {
+export const RegisterForm = () => {
+	const [userData, setUserData] = useState({ ...INITIAL_STATE })
+	const { age, username, email, password, agree, gender } = userData
+
+	const handleSubmit = e => {
 		e.preventDefault()
-		console.log(this.state)
-		this.setState(INITIAL_STATE)
+		// this.setState(INITIAL_STATE)
 	}
 
-	handleChangeInput = ({ target }) => {
+	const handleChangeInput = ({ target }) => {
 		const { name, value } = target
-		this.setState({ [name]: value })
+		console.log(name, value)
+		// this.setState({ [name]: value })
+		setUserData(prev => ({ ...prev, [name]: value })) // {username: 123, password: qwe}
 	}
-	handleCheckboxChange = e => {
-		this.setState({ agree: !this.state.agree })
-	}
-	handleChangeGender = e => {
-		this.setState({ gender: e.target.value })
+	const handleCheckboxChange = e => {
+		// this.setState({ agree: !this.state.agree })
+		setUserData(prev => ({ ...prev, agree: !prev.agree }))
 	}
 
-	render() {
-		const { age, username, email, password, agree, gender } = this.state
-		return (
-			<FlexContainer>
-				<StyledLoginForm onSubmit={this.handleSubmit}>
-					<StyledTitle>Register</StyledTitle>
-					<StyledLabel>
-						Name:
-						<StyledInput
-							type='text'
-							name='username'
-							value={username}
-							onChange={this.handleChangeInput}
-						/>
-					</StyledLabel>
-					<br />
-					<StyledLabel>
-						Email:
-						<StyledInput
-							type='email'
-							name='email'
-							value={email}
-							onChange={this.handleChangeInput}
-						/>
-					</StyledLabel>
-					<br />
-					<StyledLabel>
-						Password:
-						<StyledInput
-							type='password'
-							name='password'
-							value={password}
-							onChange={this.handleChangeInput}
-						/>
-					</StyledLabel>
-					<br />
-					<StyledLabel>
-						Age:
-						<StyledInput
-							type='number'
-							name='age'
-							value={age}
-							onChange={this.handleChangeInput}
-						/>
-					</StyledLabel>
-					<br />
-					<StyledLabel>
-						Agree:
-						<StyledInput
-							type='checkbox'
-							name='checkbox'
-							checked={agree}
-							onChange={this.handleCheckboxChange}
-						/>
-					</StyledLabel>
-					<br />
-					<div>
-						<input
-							type='radio'
-							name='radioButton'
-							value='male'
-							checked={'male' === gender}
-							onChange={this.handleChangeGender}
-						/>{' '}
-						<span>Male</span>
-						<input
-							type='radio'
-							name='radioButton'
-							value='female'
-							checked={'female' === gender}
-							onChange={this.handleChangeGender}
-						/>
-						<span>Female</span>
-						<input
-							type='radio'
-							name='radioButton'
-							value='other'
-							checked={'other' === gender}
-							onChange={this.handleChangeGender}
-						/>
-						<span>Other</span>
-					</div>
-					<StyledButton disabled={!agree}>Register</StyledButton>
-				</StyledLoginForm>
-			</FlexContainer>
-		)
-	}
+	return (
+		<FlexContainer>
+			<StyledLoginForm onSubmit={handleSubmit}>
+				<StyledTitle>Register</StyledTitle>
+				<StyledLabel>
+					Name:
+					<StyledInput
+						type='text'
+						name='username'
+						value={username}
+						onChange={handleChangeInput}
+					/>
+				</StyledLabel>
+				<br />
+				<StyledLabel>
+					Email:
+					<StyledInput
+						type='email'
+						name='email'
+						value={email}
+						onChange={handleChangeInput}
+					/>
+				</StyledLabel>
+				<br />
+				<StyledLabel>
+					Password:
+					<StyledInput
+						type='password'
+						name='password'
+						value={password}
+						onChange={handleChangeInput}
+					/>
+				</StyledLabel>
+				<br />
+				<StyledLabel>
+					Age:
+					<StyledInput
+						type='number'
+						name='age'
+						value={age}
+						onChange={handleChangeInput}
+					/>
+				</StyledLabel>
+				<br />
+				<StyledLabel>
+					Agree:
+					<StyledInput
+						type='checkbox'
+						name='checkbox'
+						checked={agree}
+						onChange={handleCheckboxChange}
+					/>
+				</StyledLabel>
+				<br />
+				<div>
+					<input
+						type='radio'
+						name='gender'
+						value='male'
+						checked={'male' === gender}
+						onChange={handleChangeInput}
+					/>{' '}
+					<span>Male</span>
+					<input
+						type='radio'
+						name='gender'
+						value='female'
+						checked={'female' === gender}
+						onChange={handleChangeInput}
+					/>
+					<span>Female</span>
+					<input
+						type='radio'
+						name='gender'
+						value='other'
+						checked={'other' === gender}
+						onChange={handleChangeInput}
+					/>
+					<span>Other</span>
+				</div>
+				<StyledButton disabled={!agree}>Register</StyledButton>
+			</StyledLoginForm>
+		</FlexContainer>
+	)
 }
+
+// export class RegisterForm extends Component {
+// 	state = {
+// 		...INITIAL_STATE,
+// 	}
+// handleSubmit = e => {
+// 	e.preventDefault()
+// 	console.log(this.state)
+// 	this.setState(INITIAL_STATE)
+// }
+
+// handleChangeInput = ({ target }) => {
+// 	const { name, value } = target
+// 	this.setState({ [name]: value })
+// }
+// handleCheckboxChange = e => {
+// 	this.setState({ agree: !this.state.agree })
+// }
+// handleChangeGender = e => {
+// 	this.setState({ gender: e.target.value })
+// }
+
+// 	render() {
+// 		const { age, username, email, password, agree, gender } = this.state
+// 		return (
+// 			<FlexContainer>
+// 				<StyledLoginForm onSubmit={this.handleSubmit}>
+// 					<StyledTitle>Register</StyledTitle>
+// 					<StyledLabel>
+// 						Name:
+// 						<StyledInput
+// 							type='text'
+// 							name='username'
+// 							value={username}
+// 							onChange={this.handleChangeInput}
+// 						/>
+// 					</StyledLabel>
+// 					<br />
+// 					<StyledLabel>
+// 						Email:
+// 						<StyledInput
+// 							type='email'
+// 							name='email'
+// 							value={email}
+// 							onChange={this.handleChangeInput}
+// 						/>
+// 					</StyledLabel>
+// 					<br />
+// 					<StyledLabel>
+// 						Password:
+// 						<StyledInput
+// 							type='password'
+// 							name='password'
+// 							value={password}
+// 							onChange={this.handleChangeInput}
+// 						/>
+// 					</StyledLabel>
+// 					<br />
+// 					<StyledLabel>
+// 						Age:
+// 						<StyledInput
+// 							type='number'
+// 							name='age'
+// 							value={age}
+// 							onChange={this.handleChangeInput}
+// 						/>
+// 					</StyledLabel>
+// 					<br />
+// 					<StyledLabel>
+// 						Agree:
+// 						<StyledInput
+// 							type='checkbox'
+// 							name='checkbox'
+// 							checked={agree}
+// 							onChange={this.handleCheckboxChange}
+// 						/>
+// 					</StyledLabel>
+// 					<br />
+// 					<div>
+// 						<input
+// 							type='radio'
+// 							name='radioButton'
+// 							value='male'
+// 							checked={'male' === gender}
+// 							onChange={this.handleChangeGender}
+// 						/>{' '}
+// 						<span>Male</span>
+// 						<input
+// 							type='radio'
+// 							name='radioButton'
+// 							value='female'
+// 							checked={'female' === gender}
+// 							onChange={this.handleChangeGender}
+// 						/>
+// 						<span>Female</span>
+// 						<input
+// 							type='radio'
+// 							name='radioButton'
+// 							value='other'
+// 							checked={'other' === gender}
+// 							onChange={this.handleChangeGender}
+// 						/>
+// 						<span>Other</span>
+// 					</div>
+// 					<StyledButton disabled={!agree}>Register</StyledButton>
+// 				</StyledLoginForm>
+// 			</FlexContainer>
+// 		)
+// 	}
+// }

@@ -1,8 +1,9 @@
 import { Counter } from './components/Counter/Counter'
+import { RegisterForm } from './components/RegisterForm/RegisterForm'
 function App() {
 	return (
 		<>
-			<Counter />
+			<RegisterForm />
 		</>
 	)
 }
