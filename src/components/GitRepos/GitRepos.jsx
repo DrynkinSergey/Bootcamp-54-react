@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useCallback, useEffect, useState } from 'react'
 import { GitHeader } from './GitHeader'
 import { GitReposList } from './GitReposList'
 import { fetchRepos } from '../../services/api'
@@ -13,25 +13,23 @@ export const GitRepos = () => {
 	const [query, setQuery] = useState('React')
 	const [page, setPage] = useState(1)
 
-	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true)
-			try {
-				const { data } = await fetchRepos({
-					q: query,
-					page,
-				})
-				setRepos(data.items)
-				// this.setState({ repos: data.items })
-			} catch (error) {
-				toast.error(error.message)
-			} finally {
-				setLoading(false)
-				// this.setState({ loading: false })
-			}
+	const fetchData = useCallback(async () => {
+		setLoading(true)
+		try {
+			const { data } = await fetchRepos({
+				q: query,
+				page,
+			})
+			setRepos(data.items)
+		} catch (error) {
+			toast.error(error.message)
+		} finally {
+			setLoading(false)
 		}
-		fetchData()
 	}, [page, query])
+	useEffect(() => {
+		fetchData()
+	}, [fetchData])
 
 	const handleChangeQuery = query => {
 		// this.setState({ query })

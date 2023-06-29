@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
 	Flex,
 	FlexContainer,
@@ -10,15 +10,17 @@ export const Counter = () => {
 	const [counter, setCounter] = useState(0)
 	const [step, setStep] = useState(1)
 
+	const myBigCalculatiionEver = step => {
+		console.log('CALCULATE')
+		for (let i = 1; i < 1000000000; i++) {}
+		return 1 + step
+	}
+	// const calcValue = myBigCalculatiionEver(step)
+	const calcValue = useMemo(() => myBigCalculatiionEver(step), [step])
+
 	useEffect(() => {
 		console.log('Mount')
 	}, [])
-	useEffect(() => {
-		console.log('Ти змінив лічильник або крок')
-	}, [counter, step])
-	useEffect(() => {
-		console.log('Ти змінив тільки крок')
-	}, [step])
 
 	const handleChangeStep = stepValue => {
 		setStep(Number(stepValue))
@@ -43,6 +45,7 @@ export const Counter = () => {
 						onChange={e => handleChangeStep(e.target.value)}
 					/>
 				</div>
+				<h1>My value : {calcValue}</h1>
 				<h1>{counter}</h1>
 				<Flex>
 					<StyledButton onClick={decrement}>minus</StyledButton>

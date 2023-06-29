@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useCallback, useEffect, useState } from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
 import { toast } from 'react-toastify'
@@ -8,25 +8,26 @@ export const TodoList = () => {
 	const [tasks, setTasks] = useState([])
 	const [inputValue, setInputValue] = useState('')
 	const [page, setPage] = useState(1)
-	useEffect(() => {
-		const getData = async () => {
-			try {
-				const { data } = await getAllTodos({
-					_page: page,
-				})
-				console.log(data)
 
-				// this.setState(prevState => ({
-				// 	tasks: [...prevState.tasks, ...data],
-				// }))
-				setTasks(prev => [...prev, ...data])
-			} catch (error) {
-				console.log(error)
-				toast.error('Try again...')
-			}
+	const getData = useCallback(async () => {
+		try {
+			const { data } = await getAllTodos({
+				_page: page,
+			})
+			console.log(data)
+
+			// this.setState(prevState => ({
+			// 	tasks: [...prevState.tasks, ...data],
+			// }))
+			setTasks(prev => [...prev, ...data])
+		} catch (error) {
+			console.log(error)
+			toast.error('Try again...')
 		}
+	},[page])
+	useEffect(() => {
 		getData()
-	}, [page])
+	}, [getData])
 
 	const handleLoadMore = () => {
 		// this.setState(prevState => ({ page: prevState.page + 1 }))
