@@ -7,7 +7,6 @@ import { ContextProvider } from './HOC/ContextProvider'
 export const App = () => {
 	return (
 		<>
-			<TodoList />
 			<Counter />
 		</>
 	)

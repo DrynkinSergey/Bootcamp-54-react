@@ -1,41 +1,24 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useReducer, useState } from 'react'
 import {
 	Flex,
 	FlexContainer,
 	StyledButton,
 	StyledCounter,
 } from './Counter.styled'
-import { loginContext } from '../../HOC/ContextProvider'
+import { counterReducer, initialState } from '../../helpers/reducer'
 
 export const Counter = () => {
-	const [counter, setCounter] = useState(0)
-	const [step, setStep] = useState(1)
-	const { array } = useContext(loginContext)
-	console.log(array)
-	const myBigCalculatiionEver = step => {
-		console.log('CALCULATE')
-		for (let i = 1; i < 1000000000; i++) {}
-		return 1 + step
-	}
-	// const calcValue = myBigCalculatiionEver(step)
-	const calcValue = useMemo(() => myBigCalculatiionEver(step), [step])
-
+	const [state, dispatch] = useReducer(counterReducer, initialState)
+	const { counter, step } = state
 	useEffect(() => {
 		console.log('Mount')
 	}, [])
 
 	const handleChangeStep = stepValue => {
-		setStep(Number(stepValue))
+		// setStep(Number(stepValue))
+		dispatch({ type: 'setStep', payload: Number(stepValue) })
 	}
-	const increment = () => {
-		setCounter(prev => prev + step)
-	}
-	const decrement = () => {
-		setCounter(prev => prev - step)
-	}
-	const reset = () => {
-		setCounter(0)
-	}
+
 	return (
 		<FlexContainer>
 			<StyledCounter>
@@ -47,12 +30,16 @@ export const Counter = () => {
 						onChange={e => handleChangeStep(e.target.value)}
 					/>
 				</div>
-				<h1>My value : {calcValue}</h1>
+
 				<h1>{counter}</h1>
 				<Flex>
-					<StyledButton onClick={decrement}>minus</StyledButton>
-					<StyledButton onClick={reset}>reset</StyledButton>
-					<StyledButton onClick={() => setCounter(prev => prev + 1)}>
+					<StyledButton onClick={() => dispatch({ type: 'minus' })}>
+						minus
+					</StyledButton>
+					<StyledButton onClick={() => dispatch({ type: 'reset' })}>
+						reset
+					</StyledButton>
+					<StyledButton onClick={() => dispatch({ type: 'plus' })}>
 						plus
 					</StyledButton>
 				</Flex>
