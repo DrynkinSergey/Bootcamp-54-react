@@ -1,12 +1,13 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useContext, useState } from 'react'
 import { StyledHeader } from './GitRepos.styled'
 import { Modal } from '../Modal/Modal'
 import { Login } from '../Login/Login'
+import { loginContext } from '../../HOC/ContextProvider'
 
 export const GitHeader = ({ handleChangeQuery }) => {
 	const [value, setValue] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
-
+	const { name, login } = useContext(loginContext)
 	const toggleModal = () => {
 		setIsOpen(prev => !prev)
 		// this.setState(prev => ({ isOpen: !prev.isOpen }))
@@ -22,11 +23,11 @@ export const GitHeader = ({ handleChangeQuery }) => {
 
 	return (
 		<StyledHeader>
-			<h1>Welcome to GitRepos</h1>
+			<h1>Welcome {name}</h1>
 			<button onClick={toggleModal}>Login</button>
-			{isOpen ? (
+			{isOpen && !login ? (
 				<Modal onClose={toggleModal}>
-					<Login />
+					<Login onClose={toggleModal} />
 				</Modal>
 			) : null}
 			<form onSubmit={handleSubmit}>

@@ -1,15 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import {
 	Flex,
 	FlexContainer,
 	StyledButton,
 	StyledCounter,
 } from './Counter.styled'
+import { loginContext } from '../../HOC/ContextProvider'
 
 export const Counter = () => {
 	const [counter, setCounter] = useState(0)
 	const [step, setStep] = useState(1)
-
+	const { array } = useContext(loginContext)
+	console.log(array)
 	const myBigCalculatiionEver = step => {
 		console.log('CALCULATE')
 		for (let i = 1; i < 1000000000; i++) {}

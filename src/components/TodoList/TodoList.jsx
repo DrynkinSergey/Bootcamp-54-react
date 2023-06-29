@@ -1,14 +1,22 @@
-import React, { Component, useCallback, useEffect, useState } from 'react'
+import React, {
+	Component,
+	useCallback,
+	useContext,
+	useEffect,
+	useState,
+} from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
 import { toast } from 'react-toastify'
 import { getAllTodos } from '../../services/api'
+import { loginContext } from '../../HOC/ContextProvider'
 
 export const TodoList = () => {
 	const [tasks, setTasks] = useState([])
 	const [inputValue, setInputValue] = useState('')
 	const [page, setPage] = useState(1)
-
+	const { userInfo } = useContext(loginContext)
+	console.log('userInfo =>>>', userInfo.address.city)
 	const getData = useCallback(async () => {
 		try {
 			const { data } = await getAllTodos({
@@ -24,7 +32,7 @@ export const TodoList = () => {
 			console.log(error)
 			toast.error('Try again...')
 		}
-	},[page])
+	}, [page])
 	useEffect(() => {
 		getData()
 	}, [getData])
