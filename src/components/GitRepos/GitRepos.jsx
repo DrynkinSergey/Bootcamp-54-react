@@ -11,10 +11,18 @@ import { fetchRepos } from '../../services/api'
 import { FidgetSpinner } from 'react-loader-spinner'
 import { styled } from 'styled-components'
 import { toast } from 'react-toastify'
-import { initialState, reposReducer } from '../../helpers/reposReducer'
+import { reposReducer } from '../../helpers/reposReducer'
 
 export const GitRepos = ({ user }) => {
+	const initialState = {
+		repos: [],
+		loading: false,
+		query: 'React',
+		page: 1,
+		error: null,
+	}
 	const [state, dispatch] = useReducer(reposReducer, initialState)
+
 	const { page, query, repos, loading, error } = state
 	const fetchData = useCallback(async () => {
 		// setLoading(true)

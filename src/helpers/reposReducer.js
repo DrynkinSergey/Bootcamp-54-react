@@ -1,11 +1,10 @@
-export const initialState = {
-	repos: [],
-	loading: false,
-	query: 'React',
-	page: 1,
-	error: null,
-}
+// 1. Створення початкового значення (инит стейт)
+// 2. Створення функції редюсер
+// 3. Виклик юз редюсера
+// 4. Використання діспатча
+
 export const reposReducer = (state, action) => {
+	console.log(action)
 	switch (action.type) {
 		case 'setLoading':
 			return {
