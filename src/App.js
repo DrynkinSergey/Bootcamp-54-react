@@ -7,7 +7,7 @@ import { ContextProvider } from './HOC/ContextProvider'
 export const App = () => {
 	return (
 		<>
-			<Counter />
+			<GitRepos />
 		</>
 	)
 }
