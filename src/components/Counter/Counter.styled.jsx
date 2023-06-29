@@ -4,7 +4,6 @@ export const Flex = styled.div`
 	gap: 20px;
 `
 export const FlexContainer = styled(Flex)`
-	min-height: 100vh;
 	justify-content: center;
 	align-items: center;
 `

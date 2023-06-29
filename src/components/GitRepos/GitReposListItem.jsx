@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useContext, useState } from 'react'
 import { StyledCard, StyledRepoImg } from './GitRepos.styled'
 import { Modal } from '../Modal/Modal'
 
@@ -7,11 +7,13 @@ export const GitReposListItem = ({
 	desc,
 	language,
 	url,
+	user,
 	author,
 	stars,
 	link,
 }) => {
 	const [isOpen, setIsOpen] = useState(false)
+
 	const toggleModal = () => {
 		setIsOpen(prev => !prev)
 		// this.setState(prev => ({ isOpen: !prev.isOpen }))

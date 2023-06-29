@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GitReposListItem } from './GitReposListItem'
 import { StyledRepoList } from './GitRepos.styled'
+import { styled } from 'styled-components'
 
 export const GitReposList = ({ repos = [] }) => {
 	if (!repos.length) {
 		return <h1>You request is not available, try again</h1>
 	}
+
 	return (
 		<StyledRepoList>
 			{repos.map(repo => (
@@ -23,3 +25,6 @@ export const GitReposList = ({ repos = [] }) => {
 		</StyledRepoList>
 	)
 }
+const Input = styled.input`
+	border: 1px solid;
+`

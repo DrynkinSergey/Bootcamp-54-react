@@ -6,7 +6,7 @@ import { FidgetSpinner } from 'react-loader-spinner'
 import { styled } from 'styled-components'
 import { toast } from 'react-toastify'
 
-export const GitRepos = () => {
+export const GitRepos = ({ user }) => {
 	const [repos, setRepos] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
@@ -72,7 +72,7 @@ export const GitRepos = () => {
 					<h1>Loading...</h1>
 				</Flex>
 			) : (
-				<GitReposList repos={repos} />
+				<GitReposList user={user} repos={repos} />
 			)}
 		</>
 	)
