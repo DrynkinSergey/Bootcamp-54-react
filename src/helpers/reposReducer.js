@@ -4,7 +4,6 @@
 // 4. Використання діспатча
 
 export const reposReducer = (state, action) => {
-	console.log(action)
 	switch (action.type) {
 		case 'setLoading':
 			return {
