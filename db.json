@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "name": "Anatoliy",
+      "position": "Developer",
+      "id": 1
+    },
+    {
+      "name": "Sergey",
+      "position": "CEO",
+      "id": 2
+    },
+    {
+      "name": "Anton",
+      "position": "CTO",
+      "id": 3
+    },
+    {
+      "name": "John",
+      "position": "Mentor",
+      "id": 4
+    },
+    {
+      "name": "Lesley",
+      "position": "Mentor",
+      "id": 5
+    }
+  ]
+}
