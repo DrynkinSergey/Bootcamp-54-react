@@ -14,10 +14,11 @@ export const ContextProvider = ({ children }) => {
 	}
 	//Створюємо стейт та діспатч
 	const [state, dispatch] = useReducer(userReducer, initialState)
-
+	const positions = ['Developer', 'QA', 'CEO', 'Mentor', 'Cleaner', 'PM', 'HR']
 	const contextValue = {
 		state,
 		dispatch,
+		positions,
 	}
 	return (
 		<UserContext.Provider value={contextValue}>{children}</UserContext.Provider>

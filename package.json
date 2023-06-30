@@ -21,7 +21,7 @@
 		"styled-components": "^6.0.0-rc.3"
 	},
 	"scripts": {
-		"server": "json-server --watch -p 3002 db.json",
+		"server": "json-server --watch -p 8080 db.json",
 		"dev": "react-scripts start",
 		"start": "concurrently \"npm run dev\" \"npm run server\"",
 		"build": "react-scripts build",

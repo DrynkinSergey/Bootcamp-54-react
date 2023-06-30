@@ -1,24 +1,9 @@
 {
   "users": [
     {
-      "name": "SERG",
+      "name": "STEPAN",
       "position": "Developer",
       "id": "866854d1-9513-4f76-9e23-86c0d5c25c47"
-    },
-    {
-      "name": "Sergey",
-      "position": "Developer",
-      "id": "e33f37d8-e3af-4a27-a828-120bb3325c69"
-    },
-    {
-      "name": "ALEX",
-      "position": "Developer",
-      "id": "1ff34e67-5d5d-4a26-9c40-722f8897f1eb"
-    },
-    {
-      "name": "Anton",
-      "position": "Developer",
-      "id": "781540da-490f-4e31-a5e9-f1571c02953c"
     }
   ]
 }
