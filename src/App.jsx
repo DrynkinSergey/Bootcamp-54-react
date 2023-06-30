@@ -1,23 +1,36 @@
 import React, { useState } from 'react'
 import { useMyContext } from './context/users/useMyContext'
 
+import { addUser } from './context/users/reducer/actions'
+import { UserList } from './components/UserList'
+import { toast } from 'react-toastify'
+import { SelectPosition } from './components/SelectPosition'
+
 export const App = () => {
-	const [user, setUser] = useState('')
+	const [name, setName] = useState('')
+	const [position, setPosition] = useState('Developer')
 	const handleSubmit = e => {
 		e.preventDefault()
-		console.log('OK')
+		// console.log(addUser())
+		dispatch(addUser(name))
+		toast.info('Add is success')
+
+		setName('')
 	}
+	const { dispatch } = useMyContext()
 
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'
-					value={user}
-					onChange={e => setUser(e.target.value)}
+					value={name}
+					onChange={e => setName(e.target.value)}
 				/>
+				<SelectPosition position={position} setPosition={setPosition} />
 				<button>Add</button>
 			</form>
+
 			<table>
 				<thead>
 					<tr>
@@ -28,14 +41,7 @@ export const App = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Alex</td>
-						<td>Developer</td>
-						<td>
-							<button>Delete</button>
-						</td>
-					</tr>
+					<UserList />
 				</tbody>
 			</table>
 		</>
