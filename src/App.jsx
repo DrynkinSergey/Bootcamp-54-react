@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { styled } from 'styled-components'
 import { Select } from './components/Select'
 import { getSortedData } from './helpers/getSortedData'
-import { fetchUsers } from './services/api'
+import { createUser, fetchUsers } from './services/api'
 
 export const App = () => {
 	const { state, dispatch, positions } = useMyContext()
@@ -46,6 +46,7 @@ export const App = () => {
 				<button>Add</button>
 			</form>
 			<Select value={sortType} setValue={setSortType} data={sortVariants} />
+			<button onClick={createUser}>ADD user</button>
 			<Table>
 				<thead>
 					<tr>
