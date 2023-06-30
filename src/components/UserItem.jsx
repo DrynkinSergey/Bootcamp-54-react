@@ -1,7 +1,7 @@
 import React from 'react'
 import { changeUserName, removeUser } from '../context/users/reducer/actions'
 import { toast } from 'react-toastify'
-import { deleteUserAPI } from '../services/api'
+import { changeUserAPI, deleteUserAPI } from '../services/api'
 
 export const UserItem = ({ id, idx, name, position, dispatch }) => {
 	const handleDelete = () => {
@@ -10,7 +10,9 @@ export const UserItem = ({ id, idx, name, position, dispatch }) => {
 		toast.success('Delete is success')
 	}
 	const handleChangeName = () => {
-		dispatch(changeUserName({ id, name: prompt('Enter name:') }))
+		const newName = prompt('Enter name:')
+		dispatch(changeUserName({ id, name: newName }))
+		changeUserAPI({ id, name: newName })
 	}
 
 	return (

@@ -3,19 +3,28 @@
 		{
 			"name": "STEPAN",
 			"position": "Developer",
-			"id": "866854d1-9513-4f76-9e23-86c0d5c25c47"
-		}
-	],
-	"todos": [
-		{
-			"todo": "Walk with STEPAN",
-			"completed": true,
-			"id": "866854d1-9513-4f76-9e23-86c0d5c25c47"
+			"id": 1
 		},
 		{
-			"todo": "Watch movie",
-			"completed": false,
-			"id": "866854d1-9513-4f76-9e23-86cd0d5c25c47"
+			"name": "Alex",
+			"position": "CEO",
+			"id": "001fc7b3-f846-4508-96a4-4c512d089532"
+		},
+		{
+			"name": "Olena",
+			"position": "Developer",
+			"id": "a94406b7-9a3b-4a57-a434-0ad6dfd1d406"
+		},
+		{
+			"name": "Klava",
+			"position": "Developer",
+			"id": "b4b03e39-3b56-4954-84a2-d3b6a68cd215"
+		},
+
+		{
+			"name": "Klava2",
+			"position": "Developer",
+			"id": "61198696-2749-4ec7-b3c5-6d55fc3e605d"
 		}
 	]
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useMyContext } from './context/users/useMyContext'
 
 import { addUser, setUsersFromServer } from './context/users/reducer/actions'
@@ -28,7 +28,13 @@ export const App = () => {
 		toast.info('Add is success')
 		setName('')
 	}
-
+	const handleCreateUser = () => {
+		createUser({
+			name,
+			position,
+			id: crypto.randomUUID(),
+		}).then(res => dispatch(addUser(res)))
+	}
 	const sortedData = useMemo(
 		() => getSortedData({ users: state.users, type: sortType }),
 		[sortType, state.users]
@@ -46,7 +52,7 @@ export const App = () => {
 				<button>Add</button>
 			</form>
 			<Select value={sortType} setValue={setSortType} data={sortVariants} />
-			<button onClick={createUser}>ADD user</button>
+			<button onClick={handleCreateUser}>ADD user</button>
 			<Table>
 				<thead>
 					<tr>
