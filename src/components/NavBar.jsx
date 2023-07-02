@@ -2,20 +2,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const NavBar = () => {
-	const navMap = [
-		{ href: '/', title: 'Home' },
-		{ href: '/about', title: 'About' },
-		{ href: '/users', title: 'Users' },
-	]
-	return (
-		<SideBar>
-			{navMap.map(link => (
-				<NavItem key={link.href} to={link.href}>
-					{link.title}
-				</NavItem>
-			))}
-		</SideBar>
-	)
+	return <SideBar></SideBar>
 }
 
 const SideBar = styled.nav`
