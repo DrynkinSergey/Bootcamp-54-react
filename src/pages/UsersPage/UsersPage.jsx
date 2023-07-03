@@ -10,7 +10,8 @@ export const UsersPage = () => {
 			<ul>
 				{users.map(item => (
 					<li key={item.id}>
-						<Link to={`${item.id}`}>{item.name}</Link>
+						{/* <Link to={`${item.id}`}>{item.name}</Link> */}
+						<Link to={item.id.toString()}>{item.name}</Link>
 					</li>
 				))}
 			</ul>

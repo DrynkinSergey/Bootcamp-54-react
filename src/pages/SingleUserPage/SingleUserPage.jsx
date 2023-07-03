@@ -5,8 +5,9 @@ import { useHttp } from '../../hooks/useHttp'
 const SingleUserPage = () => {
 	const { id } = useParams()
 	const navigate = useNavigate()
-	console.log(navigate)
-	const [user, setUser] = useHttp(fetchOneUser, id)
+
+	const [user] = useHttp(fetchOneUser, id)
+
 	const handleClickBackBtn = () => {
 		navigate('/users')
 	}
@@ -21,11 +22,11 @@ const SingleUserPage = () => {
 				<h2>Email: {user.email}</h2>
 				<h3>Address: {user.address?.city}</h3>
 				<h3>Address: {user.address?.street}</h3>
-				<Link to='posts'>See user posts</Link>
-				<br />
-				<Link to='info'>See user info</Link>
-				<Outlet />
 			</div>
+			<Link to='posts'>See user posts</Link>
+			<br />
+			<Link to='info'>See user info</Link>
+			<Outlet />
 		</h1>
 	)
 }
