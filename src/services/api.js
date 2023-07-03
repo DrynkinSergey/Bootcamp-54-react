@@ -1,12 +1,8 @@
 import axios from 'axios'
 
 export const fetchUsers = async () => {
-	try {
-		const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-		return res.data
-	} catch (error) {
-		return error.message
-	}
+	const res = await axios.get('https://jsonplaceholder.typicode.com/users')
+	return res.data
 }
 
 export const fetchOneUser = async id => {
