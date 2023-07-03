@@ -6,6 +6,7 @@ export const NavBar = () => {
 		{ href: '/', title: 'Home' },
 		{ href: '/about', title: 'About' },
 		{ href: '/users', title: 'Users' },
+		{ href: '/test', title: 'Test' },
 	]
 	return (
 		<SideBar>

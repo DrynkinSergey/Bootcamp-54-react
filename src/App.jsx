@@ -9,12 +9,14 @@ import SingleUserPosts from './pages/SingleUserPage/SingleUserPosts'
 import OurCompany from './pages/AboutPage/nestedPages/OurCompany'
 import OurAim from './pages/AboutPage/nestedPages/OurAim'
 import IndexPage from './pages/AboutPage/nestedPages/IndexPage'
+import { Test } from './pages/Test'
 export const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Homepage />} />
+					<Route path='test' element={<Test />} />
 					<Route path='about' element={<AboutPage />}>
 						<Route index element={<IndexPage />} />
 						<Route path='ourCompany' element={<OurCompany />} />
