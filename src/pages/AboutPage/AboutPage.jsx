@@ -1,5 +1,20 @@
 import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
+import { styled } from 'styled-components'
 
 export const AboutPage = () => {
-	return <h1>AboutPage</h1>
+	return (
+		<>
+			<h1>AboutPage</h1>
+			<NavList>
+				<Link to='ourCompany'>Our Company</Link>
+				<Link to='ourAim'>Our Aim</Link>
+			</NavList>
+			<Outlet />
+		</>
+	)
 }
+const NavList = styled.nav`
+	display: flex;
+	gap: 20px;
+`
