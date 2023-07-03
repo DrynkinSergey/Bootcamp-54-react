@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { fetchUsers } from '../../services/api'
 import { Link, NavLink } from 'react-router-dom'
+import { useHttp } from '../../hooks/useHttp'
+import { fetchUsers } from '../../services/api'
 
 export const UsersPage = () => {
-	const [users, setUsers] = useState([])
-	useEffect(() => {
-		fetchUsers().then(res => setUsers(res))
-	}, [])
+	const [users, setUsers] = useHttp(fetchUsers)
 	return (
 		<>
 			<h1>UsersPage</h1>

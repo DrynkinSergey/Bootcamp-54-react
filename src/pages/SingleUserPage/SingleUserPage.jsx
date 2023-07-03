@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchOneUser } from '../../services/api'
+import { useHttp } from '../../hooks/useHttp'
 
 const SingleUserPage = () => {
 	const { id } = useParams()
-	const [user, setUser] = useState('')
-	useEffect(() => {
-		fetchOneUser(id).then(res => setUser(res))
-	}, [id])
+	const [user, setUser] = useHttp(fetchOneUser, id)
+	// const [user, setUser] = useState('')
+	// useEffect(() => {
+	// 	fetchOneUser(id).then(res => setUser(res))
+	// }, [id])
 	return (
 		<h1>
 			SingleUserPage #{id}
