@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import { fetchPosts } from '../../services/api'
+import React, { useEffect, useState } from 'react'
+import { fetchPosts, fetchPostsByQuery } from '../../services/api'
 import { useHttp } from '../../hooks/useHttp'
 import { useSearchParams } from 'react-router-dom'
 
 const Posts = () => {
-	const [posts] = useHttp(fetchPosts)
 	const [value, setValue] = useState('')
 	const [searchParams, setSearchParams] = useSearchParams()
 	const query = searchParams.get('query') ?? ''
 	// console.log(query, typeof query)
-	const getFilteredData = () => {
-		return posts.filter(post =>
-			post.body.toLowerCase().includes(query.toLowerCase())
-		)
-	}
-	const filteredData = getFilteredData()
+	const [posts] = useHttp(fetchPostsByQuery, query)
+	// const getFilteredData = () => {
+	// 	return posts.filter(post =>
+	// 		post.body.toLowerCase().includes(query.toLowerCase())
+	// 	)
+	// }
+	// const filteredData = getFilteredData()
 	const handleSubmit = e => {
 		e.preventDefault()
 		setSearchParams(value ? { query: value } : {})
@@ -38,7 +38,7 @@ const Posts = () => {
 			</form>
 			{query && <h1>You search right now: {query}</h1>}
 			<ul>
-				{filteredData.map(post => (
+				{posts.map(post => (
 					<li key={post.id}>
 						<h2>{post.title}</h2>
 						<p>{post.body}</p>
