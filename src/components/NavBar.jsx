@@ -1,20 +1,34 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { useAuth } from '../hooks/useAuth'
 
 export const NavBar = () => {
+	const { user, logout } = useAuth()
+	const navigate = useNavigate()
 	const navMap = [
 		{ href: '/', title: 'Home' },
 		{ href: '/about', title: 'About' },
 		{ href: '/users', title: 'Users' },
-		{ href: '/test', title: 'Test' },
+
+		{ href: '/login', title: 'Login' },
 	]
 	return (
 		<SideBar>
+			{user && <h1>{user}</h1>}
 			{navMap.map(link => (
 				<NavItem key={link.href} to={link.href}>
 					{link.title}
 				</NavItem>
 			))}
+
+			{user ? (
+				<>
+					<NavItem to='/test'>Test</NavItem>
+					<button onClick={() => logout()}>Logout</button>
+				</>
+			) : (
+				<button onClick={() => navigate('/login')}>Login</button>
+			)}
 		</SideBar>
 	)
 }

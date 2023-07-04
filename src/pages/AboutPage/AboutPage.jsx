@@ -9,6 +9,7 @@ export const AboutPage = () => {
 			<NavList>
 				<Link to='ourCompany'>Our Company</Link>
 				<Link to='ourAim'>Our Aim</Link>
+				<Link to='colorPicker'>Color Picker</Link>
 			</NavList>
 			<Outlet />
 		</>
