@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import { Homepage } from './pages/Homepage/Homepage'
 import { UsersPage } from './pages/UsersPage/UsersPage'
 import SingleUserPage from './pages/SingleUserPage/SingleUserPage'
 import { Layout } from './components/Layout'
-import { AboutPage } from './pages/AboutPage/AboutPage'
 import SingleUserPosts from './pages/SingleUserPage/SingleUserPosts'
-import OurCompany from './pages/AboutPage/nestedPages/OurCompany'
-import OurAim from './pages/AboutPage/nestedPages/OurAim'
 import IndexPage from './pages/AboutPage/nestedPages/IndexPage'
 import { Test } from './pages/Test'
 import PrivateRoute from './hoc/PrivateRoute'
 import Login from './pages/Login/Login'
 import { PublicRoute } from './hoc/PublicRoute'
-import { ColorPicker } from './pages/ColorPicker/ColorPicker'
 import Posts from './pages/Posts/Posts'
+
+const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'))
+const OurAim = lazy(() => import('./pages/AboutPage/nestedPages/OurAim'))
+const ColorPicker = lazy(() => import('./pages/ColorPicker/ColorPicker'))
+const OurCompany = lazy(() =>
+	import('./pages/AboutPage/nestedPages/OurCompany')
+)
 export const App = () => {
 	return (
 		<>

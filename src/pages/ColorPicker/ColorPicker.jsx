@@ -1,5 +1,5 @@
 import { Component, PureComponent, useEffect, useState } from 'react'
-
+import axios from 'axios'
 import {
 	StyledBackgroundTheme,
 	StyledColorPalette,
@@ -9,10 +9,11 @@ import {
 import colorsData from './../../assets/colors.json'
 import { toast } from 'react-toastify'
 
-export const ColorPicker = ({ message }) => {
+const ColorPicker = ({ message }) => {
 	const [colors] = useState(colorsData)
 	const [currentColor, setCurrentColor] = useState('white')
 	useEffect(() => {
+		axios.get('https://dummyjson.com/posts/search?q=love')
 		console.log('Color picker is ready')
 		toast.info('You change color!')
 	}, [currentColor])
@@ -36,3 +37,4 @@ export const ColorPicker = ({ message }) => {
 		</StyledBackgroundTheme>
 	)
 }
+export default ColorPicker

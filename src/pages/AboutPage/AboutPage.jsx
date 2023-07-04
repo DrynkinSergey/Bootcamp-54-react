@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { styled } from 'styled-components'
 
-export const AboutPage = () => {
+const AboutPage = () => {
 	return (
 		<>
 			<h1>AboutPage</h1>
@@ -19,3 +19,4 @@ const NavList = styled.nav`
 	display: flex;
 	gap: 20px;
 `
+export default AboutPage
