@@ -1,4 +1,6 @@
 import React from 'react'
+import { Suspense } from 'react'
+import { BallTriangle } from 'react-loader-spinner'
 import { Link, Outlet } from 'react-router-dom'
 import { styled } from 'styled-components'
 
@@ -11,7 +13,22 @@ const AboutPage = () => {
 				<Link to='ourAim'>Our Aim</Link>
 				<Link to='colorPicker'>Color Picker</Link>
 			</NavList>
-			<Outlet />
+			<Suspense
+				fallback={
+					<BallTriangle
+						height={100}
+						width={100}
+						radius={5}
+						color='#0f0bf7'
+						ariaLabel='ball-triangle-loading'
+						wrapperClass={{}}
+						wrapperStyle=''
+						visible={true}
+					/>
+				}
+			>
+				<Outlet />
+			</Suspense>
 		</>
 	)
 }

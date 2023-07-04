@@ -2,6 +2,8 @@ import React, { lazy } from 'react'
 import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import { Homepage } from './pages/Homepage/Homepage'
 import { UsersPage } from './pages/UsersPage/UsersPage'
+// import OurAim from './pages/AboutPage/nestedPages/OurAim'
+// import OurCompany from './pages/AboutPage/nestedPages/OurCompany'
 import SingleUserPage from './pages/SingleUserPage/SingleUserPage'
 import { Layout } from './components/Layout'
 import SingleUserPosts from './pages/SingleUserPage/SingleUserPosts'
@@ -11,8 +13,10 @@ import PrivateRoute from './hoc/PrivateRoute'
 import Login from './pages/Login/Login'
 import { PublicRoute } from './hoc/PublicRoute'
 import Posts from './pages/Posts/Posts'
+// import ColorPicker from './pages/ColorPicker/ColorPicker'
+import AboutPage from './pages/AboutPage/AboutPage'
 
-const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'))
+// const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'))
 const OurAim = lazy(() => import('./pages/AboutPage/nestedPages/OurAim'))
 const ColorPicker = lazy(() => import('./pages/ColorPicker/ColorPicker'))
 const OurCompany = lazy(() =>
