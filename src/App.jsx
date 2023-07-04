@@ -14,12 +14,14 @@ import PrivateRoute from './hoc/PrivateRoute'
 import Login from './pages/Login/Login'
 import { PublicRoute } from './hoc/PublicRoute'
 import { ColorPicker } from './pages/ColorPicker/ColorPicker'
+import Posts from './pages/Posts/Posts'
 export const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Homepage />} />
+					<Route path='posts' element={<Posts />} />
 					<Route
 						path='test'
 						element={

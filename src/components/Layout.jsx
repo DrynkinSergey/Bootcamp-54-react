@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { NavBar } from './NavBar'
 
 export const Layout = () => {
-	const location = useLocation()
-	console.log(location)
 	return (
 		<LayoutWrapper>
 			<NavBar />
