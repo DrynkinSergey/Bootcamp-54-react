@@ -52,14 +52,7 @@ export const App = () => {
 						<Route path='ourAim' element={<OurAim />} />
 						<Route path='colorPicker' element={<ColorPicker />} />
 					</Route>
-					<Route
-						path='users'
-						element={
-							<PrivateRoute>
-								<UsersPage />
-							</PrivateRoute>
-						}
-					/>
+					<Route path='users' element={<UsersPage />} />
 					<Route path='users/:id' element={<SingleUserPage />}>
 						<Route index element={<h1>Click on links</h1>} />
 						<Route

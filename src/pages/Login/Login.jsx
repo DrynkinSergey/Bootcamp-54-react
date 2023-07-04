@@ -6,6 +6,7 @@ const Login = () => {
 	const { login } = useAuth()
 	const navigate = useNavigate()
 	const location = useLocation()
+	console.log(location) // location{ ...., state:{from:location}}
 	const [user, setUser] = useState('')
 	const [password, setPassword] = useState('')
 	const handleSubmit = e => {

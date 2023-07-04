@@ -6,7 +6,13 @@ export const useHttp = (apiFn, params) => {
 	useEffect(() => {
 		apiFn(params)
 			.then(res => setData(res))
-			.catch(() => toast.error('Smth went wrong!!'))
+			.catch(error =>
+				toast.error(
+					error.message === 'canceled'
+						? 'Ми обірвали запит через аборт контреллер'
+						: error.message
+				)
+			)
 	}, [apiFn, params])
 	return [data, setData]
 }
