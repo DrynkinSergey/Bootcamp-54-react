@@ -1,18 +1,14 @@
-import { DECREMENT, INCREMENT, RESET } from './constants'
+import { CHANGE_STEP, DECREMENT, INCREMENT, RESET } from './constants'
 
 export const increment = () => {
-	return {
-		type: INCREMENT,
-	}
+	return { type: INCREMENT }
 }
 export const decrement = () => {
-	return {
-		type: DECREMENT,
-	}
+	return { type: DECREMENT }
 }
-
 export const reset = () => {
-	return {
-		type: RESET,
-	}
+	return { type: RESET }
+}
+export const changeStep = step => {
+	return { type: CHANGE_STEP, payload: Number(step) }
 }
