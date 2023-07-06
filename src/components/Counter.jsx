@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeStep, decrement, reset } from '../redux/counter/actions'
 import { selectCounter } from '../redux/counter/selectors'
-import { increment } from '../redux/counter/slice'
+import { changeStep, decrement, increment, reset } from '../redux/counter/slice'
 
 export const Counter = () => {
 	const counter = useSelector(selectCounter)
@@ -11,7 +10,7 @@ export const Counter = () => {
 	const [value, setValue] = useState()
 	const changeInput = value => {
 		setValue(value)
-		dispatch(changeStep(value))
+		dispatch(changeStep(+value))
 	}
 	return (
 		<div className='text-4xl text-white px-4 py-4 text-center flex justify-center items-center flex-col min-h-screen'>

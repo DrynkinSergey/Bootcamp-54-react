@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { selectFilter, selectTodos } from '../redux/todoList/selectors'
 import {
 	addTodo,
 	deleteMarked,
 	deleteTodo,
 	setFilter,
 	toggleTodo,
-} from '../redux/todoList/actions'
-import { selectFilter, selectTodos } from '../redux/todoList/selectors'
+} from '../redux/todoList/slice'
+import { nanoid } from '@reduxjs/toolkit'
 
 export const TodoList = () => {
 	const dispatch = useDispatch()
