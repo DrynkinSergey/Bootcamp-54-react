@@ -1,22 +1,38 @@
-import { combineReducers, createStore } from 'redux'
-
-import { devToolsEnhancer } from '@redux-devtools/extension'
 import { counterReducer } from './counter/slice'
 import { todoReducer } from './todoList/slice'
 import { configureStore } from '@reduxjs/toolkit'
-// const rootReducer = combineReducers({
-// 	counter: counterReducer,
-// 	todoList: todoReducer,
-// })
-// const enhancer = devToolsEnhancer()
-// export const store = createStore(rootReducer, enhancer)
+import {
+	persistStore,
+	persistReducer,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
+const persistConfig = {
+	key: 'todos',
+	version: 1,
+	storage,
+	// blacklist: ['filter'],
+	// whitelist: ['tasks'],
+}
+
+const persistedReducer = persistReducer(persistConfig, todoReducer)
 export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
-		todoList: todoReducer,
+		todoList: persistedReducer,
 	},
-	devTools: process.env.NODE_ENV !== 'production', //true false
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}),
+	devTools: process.env.NODE_ENV !== 'production',
 })
-
-// console.log(process.env)
+export const persistor = persistStore(store)
