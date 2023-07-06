@@ -21,6 +21,7 @@ const todoSlice = createSlice({
 					payload: {
 						todo,
 						id: nanoid(),
+						createdAt: new Date().toLocaleTimeString(),
 						completed: false,
 					},
 				}
