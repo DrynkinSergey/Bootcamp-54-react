@@ -1,7 +1,8 @@
 import { combineReducers, createStore } from 'redux'
-import { counterReducer } from './counter/reducer'
+
 import { todoReducer } from './todoList/reducer'
 import { devToolsEnhancer } from '@redux-devtools/extension'
+import { counterReducer } from './counter/slice'
 const rootReducer = combineReducers({
 	counter: counterReducer,
 	todoList: todoReducer,
