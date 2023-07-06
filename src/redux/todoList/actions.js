@@ -6,16 +6,18 @@ import {
 	TOGGLE_TODO,
 } from './constants'
 
-export const addTodo = todo => {
-	return {
-		type: ADD_TODO,
-		payload: {
-			id: crypto.randomUUID(),
-			completed: false,
-			todo: todo,
-		},
-	}
-}
+import { createAction } from '@reduxjs/toolkit'
+
+// export const addTodo = todo => {
+// 	return {
+// 		type: ADD_TODO,
+// 		payload: {
+// 			id: crypto.randomUUID(),
+// 			completed: false,
+// 			todo: todo,
+// 		},
+// 	}
+// }
 export const deleteTodo = id => {
 	return {
 		type: DELETE_TODO,
@@ -39,3 +41,13 @@ export const setFilter = filter => {
 		payload: { filter },
 	}
 }
+
+export const addTodo = createAction('addTodo', todo => {
+	return {
+		payload: {
+			id: crypto.randomUUID(),
+			completed: false,
+			todo: todo,
+		},
+	}
+})
