@@ -1,9 +1,9 @@
 import { createAction } from '@reduxjs/toolkit'
 
-export const increment = createAction('increment')
-export const decrement = createAction('decrement')
-export const reset = createAction('reset')
-export const changeStep = createAction('changeStep')
+export const increment = createAction('counter/increment')
+export const decrement = createAction('counter/decrement')
+export const reset = createAction('counter/reset')
+export const changeStep = createAction('counter/changeStep')
 
 // console.log(increment.toString())
 // console.log(increment.type)

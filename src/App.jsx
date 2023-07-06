@@ -5,7 +5,7 @@ import { TodoList } from './components/TodoList'
 export const App = () => {
 	return (
 		<>
-			<Counter />
+			<TodoList />
 		</>
 	)
 }

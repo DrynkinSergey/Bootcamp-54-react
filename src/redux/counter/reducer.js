@@ -35,17 +35,33 @@ const initialState = {
 // }
 
 //OBJECT NOTATION
-export const counterReducer = createReducer(initialState, {
-	[increment]: (state, action) => {
-		state.counter += state.step
-	},
-	[decrement]: (state, action) => {
-		state.counter -= state.step
-	},
-	[reset]: (state, action) => {
-		state.counter = 0
-	},
-	[changeStep]: (state, action) => {
-		state.step = action.payload
-	},
+// export const counterReducer = createReducer(initialState, {
+// 	[increment]: (state, action) => {
+// 		state.counter += state.step
+// 	},
+// 	[decrement]: (state, action) => {
+// 		state.counter -= state.step
+// 	},
+// 	[reset]: (state, action) => {
+// 		state.counter = 0
+// 	},
+// 	[changeStep]: (state, action) => {
+// 		state.step = action.payload
+// 	},
+// })
+
+export const counterReducer = createReducer(initialState, builder => {
+	builder
+		.addCase(increment, state => {
+			state.counter += state.step
+		})
+		.addCase(decrement, state => {
+			state.counter -= state.step
+		})
+		.addCase(reset, state => {
+			state.counter = 0
+		})
+		.addCase(changeStep, (state, action) => {
+			state.step = action.payload
+		})
 })
