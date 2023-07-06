@@ -12,6 +12,7 @@ import {
 	REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { userReducer } from './userSlice'
 
 const persistConfig = {
 	key: 'todos',
@@ -26,6 +27,7 @@ export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
 		todoList: persistedReducer,
+		userInfo: userReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
