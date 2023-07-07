@@ -14,7 +14,10 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {
 		login: (state, { payload }) => {
-			if (payload.username !== 'admin' || payload.email !== 'admin@mail.com') {
+			if (
+				payload.username !== process.env.REACT_APP_ACCESS_NAME ||
+				payload.email !== 'admin@mail.com'
+			) {
 				toast.error('You havent access')
 				return
 			}

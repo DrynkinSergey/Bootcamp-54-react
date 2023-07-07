@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import {
 	AddUserPage,
@@ -9,8 +9,17 @@ import {
 } from './pages'
 import { Layout } from './components'
 import { EditPage } from './pages/EditPage'
+import axios from 'axios'
 
 export const App = () => {
+	console.log('env', process.env)
+	useEffect(() => {
+		axios
+			.get(`https://jsonplaceholder.typicode.com/${process.env.REACT_APP_KEY}`)
+			.then(res => console.log(res))
+			.catch(e => console.log(e))
+	}, [])
+
 	return (
 		<Routes>
 			<Route path='/login' element={<LoginPage />} />
