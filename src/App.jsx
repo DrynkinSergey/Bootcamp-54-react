@@ -1,11 +1,6 @@
 import React from 'react'
-import { Counter } from './components/Counter'
-import { TodoList } from './components/TodoList'
+import { CuteTodo } from './components/Todo/CuteTodo'
 
 export const App = () => {
-	return (
-		<>
-			<TodoList />
-		</>
-	)
+	return <CuteTodo />
 }
