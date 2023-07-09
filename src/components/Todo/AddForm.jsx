@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { addTodo } from '../../redux/todoList/slice'
 export const AddForm = ({ onSubmit }) => {
 	const dispatch = useDispatch()
 	const handleSubmit = e => {
@@ -6,6 +7,7 @@ export const AddForm = ({ onSubmit }) => {
 		if (e.target.addTodo.value.trim()) {
 			const title = e.target.addTodo.value.trim()
 			// dispatch(addTodoThunk(title))
+			dispatch(addTodo(title))
 			e.target.reset()
 			e.target.focus()
 		}
