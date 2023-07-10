@@ -1,15 +1,9 @@
 import axios from 'axios'
-import {
-	addTodo,
-	deleteTodo,
-	fetchAllTodos,
-	setError,
-	setLoading,
-} from './slice'
+
 import { toast } from 'react-toastify'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-axios.defaults.baseURL = 'https://644b9af24bdbc0cc3a95949b.mockapi.io'
+axios.defaults.baseURL = 'https://d644b9af24bdbc0cc3a95949b.mockapi.io'
 
 export const fetchTodoThunk = createAsyncThunk(
 	'tasks/fetchTodos',
@@ -18,6 +12,7 @@ export const fetchTodoThunk = createAsyncThunk(
 			const { data } = await axios.get('/todos')
 			return data
 		} catch (error) {
+			console.log(error)
 			return rejectWithValue(error.message)
 		}
 	}
