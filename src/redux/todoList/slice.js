@@ -52,7 +52,13 @@ const todoSlice = createSlice({
 				state.tasks.splice(index, 1)
 				state.loading = false
 			})
-			.addMatcher(action => action.type.endsWith('/pending'), pending)
+			.addMatcher(
+				action => action.type.endsWith('/pending'),
+				(state, action) => {
+					state.loading = true
+					state.error = ''
+				}
+			)
 			.addMatcher(action => action.type.endsWith('/rejected'), rejected)
 	},
 })

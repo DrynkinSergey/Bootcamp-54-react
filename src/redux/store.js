@@ -5,7 +5,8 @@ import { configureStore } from '@reduxjs/toolkit'
 const myFilterMiddleware = store => next => action => {
 	console.log(action)
 	if (action.payload?.title === 'Angular') {
-		action.payload.title = 'НЕ РОБИ ЦЬОГО, НЕ ДИВИСЬ!'
+		//заміна значення в пейлоад на своє
+		action.payload.title = 'React'
 	}
 	next(action)
 }
