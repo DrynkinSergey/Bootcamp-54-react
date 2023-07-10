@@ -1,10 +1,16 @@
 import { SingleTodo } from './singleTodo'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { selectTodos } from '../../redux/todoList/selectors'
+import {
+	selectError,
+	selectLoading,
+	selectTodos,
+} from '../../redux/todoList/selectors'
 
 export const TodoList = () => {
 	const todos = useSelector(selectTodos)
+	const isLoading = useSelector(selectLoading)
+	const isError = useSelector(selectError)
 	const dispatch = useDispatch()
 	useEffect(() => {}, [dispatch])
 	const ViewData = () =>
@@ -13,7 +19,12 @@ export const TodoList = () => {
 	return (
 		<div className='font-josefin bg-darkMain shadow-mainDark'>
 			<ul className='rounded-md overflow-hidden'>
-				<ViewData />
+				{isLoading ? (
+					<h1 className='text-white text-4xl'>Loading...</h1>
+				) : (
+					<ViewData />
+				)}
+				{isError && <h1 className='text-white text-4xl'>{isError}</h1>}
 			</ul>
 		</div>
 	)

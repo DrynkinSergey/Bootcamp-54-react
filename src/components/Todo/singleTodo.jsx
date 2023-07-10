@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux'
 import icon from '../../assets/images/icon-check.svg'
 import { deleteTodo, toggleTodo } from '../../redux/todoList/slice'
-export const SingleTodo = ({ id, todo, completed }) => {
+import { deleteTodoThunk } from '../../redux/todoList/operations'
+export const SingleTodo = ({ id, title, completed }) => {
 	const dispatch = useDispatch()
 
 	const stylesActive = completed
@@ -27,10 +28,10 @@ export const SingleTodo = ({ id, todo, completed }) => {
 						: 'transition-all'
 				}
 			>
-				{todo}
+				{title}
 			</span>
 			<button
-				onClick={() => dispatch(deleteTodo(id))}
+				onClick={() => dispatch(deleteTodoThunk(id))}
 				className=' transition-all hidden text-white/20 hover:text-white  group-hover:block mx-auto'
 			>
 				X
