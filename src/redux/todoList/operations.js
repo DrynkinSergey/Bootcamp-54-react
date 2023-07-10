@@ -32,6 +32,14 @@ export const deleteTodoThunk = createAsyncThunk(
 		} catch (error) {
 			return rejectWithValue(error.message)
 		}
+	},
+	{
+		condition: (_, { getState }) => {
+			const loading = getState().todoList.loading
+			if (loading) {
+				return false
+			}
+		},
 	}
 )
 

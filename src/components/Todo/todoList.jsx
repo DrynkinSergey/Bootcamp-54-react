@@ -19,12 +19,7 @@ export const TodoList = () => {
 	return (
 		<div className='font-josefin bg-darkMain shadow-mainDark'>
 			<ul className='rounded-md overflow-hidden'>
-				{isLoading ? (
-					<h1 className='text-white text-4xl'>Loading...</h1>
-				) : (
-					<ViewData />
-				)}
-				{isError && <h1 className='text-white text-4xl'>{isError}</h1>}
+				<ViewData />
 			</ul>
 		</div>
 	)
