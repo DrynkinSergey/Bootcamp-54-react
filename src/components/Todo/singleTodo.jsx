@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux'
 import icon from '../../assets/images/icon-check.svg'
 import { deleteTodo, toggleTodo } from '../../redux/todoList/slice'
-import { deleteTodoThunk } from '../../redux/todoList/operations'
+import {
+	deleteTodoThunk,
+	toggleTodoThunk,
+} from '../../redux/todoList/operations'
 export const SingleTodo = ({ id, title, completed }) => {
 	const dispatch = useDispatch()
 
@@ -12,7 +15,7 @@ export const SingleTodo = ({ id, title, completed }) => {
 	return (
 		<li className='group  list-none cursor-pointer  py-4  border-b-white/10 border-b-[1px] text-white/80 grid   grid-cols-todo items-center'>
 			<label
-				onClick={() => dispatch(toggleTodo(id))}
+				onClick={() => dispatch(toggleTodoThunk({ id, completed }))}
 				className='relative inline-block cursor-pointer'
 			>
 				<span

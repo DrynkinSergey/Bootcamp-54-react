@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import {
 	selectError,
+	selectFilteredData,
 	selectLoading,
 	selectTodos,
 } from '../../redux/todoList/selectors'
 
 export const TodoList = () => {
-	const todos = useSelector(selectTodos)
+	const todos = useSelector(selectFilteredData)
 	const isLoading = useSelector(selectLoading)
 	const isError = useSelector(selectError)
 	const dispatch = useDispatch()

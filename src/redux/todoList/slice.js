@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { addTodoThunk, deleteTodoThunk, fetchTodoThunk } from './operations'
+import {
+	addTodoThunk,
+	deleteTodoThunk,
+	fetchTodoThunk,
+	toggleTodoThunk,
+} from './operations'
 
 const initialState = {
 	tasks: [],
@@ -21,13 +26,6 @@ const todoSlice = createSlice({
 	name: 'todos',
 	initialState,
 	reducers: {
-		toggleTodo: (state, action) => {
-			const item = state.tasks.find(task => task.id === action.payload)
-			item.completed = !item.completed
-		},
-		setFilter: (state, action) => {
-			state.filter = action.payload
-		},
 		deleteMarked: (state, action) => {
 			return {
 				...state,
@@ -43,6 +41,11 @@ const todoSlice = createSlice({
 			})
 			.addCase(addTodoThunk.fulfilled, (state, action) => {
 				state.tasks.push(action.payload)
+				state.loading = false
+			})
+			.addCase(toggleTodoThunk.fulfilled, (state, action) => {
+				const item = state.tasks.find(task => task.id === action.payload.id)
+				item.completed = action.payload.completed
 				state.loading = false
 			})
 			.addCase(deleteTodoThunk.fulfilled, (state, action) => {
@@ -63,5 +66,5 @@ const todoSlice = createSlice({
 	},
 })
 
-export const { deleteMarked, setFilter, toggleTodo } = todoSlice.actions
+export const { deleteMarked, toggleTodo } = todoSlice.actions
 export const todoReducer = todoSlice.reducer
