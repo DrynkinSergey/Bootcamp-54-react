@@ -49,7 +49,7 @@ export const CuteTodo = () => {
 				</span>
 				<AddForm />
 				<TodoList />
-				{/* <Filter /> */}
+				<Filter />
 			</div>
 		</div>
 	)

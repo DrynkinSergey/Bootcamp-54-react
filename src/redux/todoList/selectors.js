@@ -41,10 +41,15 @@ export const selectFilter = state => state.filter
 // 	0
 // )
 // }
-// export const selectUncompletedTodo = createSelector([selectTodos], todos => {
-// 	console.log('calc')
-// 	return todos.reduce(
-// 		(total, currentTodo) => (currentTodo.completed ? total : total + 1),
-// 		0
-// 	)
-// })
+// export const selectUncompletedTodo = createSelector(
+// 	[state => state.todoApi.queries?.getTodos?.data],
+// 	todos => {
+// 		console.log('calc')
+// 		if (todos) {
+// 			return todos.reduce(
+// 				(total, currentTodo) => (currentTodo.completed ? total : total + 1),
+// 				0
+// 			)
+// 		}
+// 	}
+// )
