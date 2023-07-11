@@ -4,7 +4,6 @@ import bgMobile from './../../assets/images/bg-mobile-dark.jpg'
 import { AddForm } from './AddForm'
 import { TodoList } from './todoList'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTodoThunk } from '../../redux/todoList/operations'
 import { Filter } from './Filter'
 import { selectTheme } from '../../redux/todoList/selectors'
 import { toggleTheme } from '../../redux/themeSlice'
@@ -12,9 +11,7 @@ import { toggleTheme } from '../../redux/themeSlice'
 export const CuteTodo = () => {
 	const dispatch = useDispatch()
 	const theme = useSelector(selectTheme)
-	useEffect(() => {
-		dispatch(fetchTodoThunk())
-	}, [dispatch])
+
 	const bgImage = useMemo(
 		() => (
 			<>
@@ -52,7 +49,7 @@ export const CuteTodo = () => {
 				</span>
 				<AddForm />
 				<TodoList />
-				<Filter />
+				{/* <Filter /> */}
 			</div>
 		</div>
 	)

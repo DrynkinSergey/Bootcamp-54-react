@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux'
 import icon from '../../assets/images/icon-check.svg'
-import { deleteTodo, toggleTodo } from '../../redux/todoList/slice'
+
 import {
-	deleteTodoThunk,
-	toggleTodoThunk,
-} from '../../redux/todoList/operations'
+	useDeleteTodoMutation,
+	useToggleTodoMutation,
+} from '../../redux/todoApi'
 export const SingleTodo = ({ id, title, completed }) => {
-	const dispatch = useDispatch()
+	const [deleteTodo] = useDeleteTodoMutation()
+	const [toggleTodo] = useToggleTodoMutation()
 
 	const stylesActive = completed
 		? 'bg-gradient-to-br from-checkboxFrom to-checkboxTo'
@@ -15,7 +15,7 @@ export const SingleTodo = ({ id, title, completed }) => {
 	return (
 		<li className='group  list-none cursor-pointer  py-4  border-b-white/10 border-b-[1px] text-white/80 grid   grid-cols-todo items-center'>
 			<label
-				onClick={() => dispatch(toggleTodoThunk({ id, completed }))}
+				onClick={() => toggleTodo({ id, completed: !completed })}
 				className='relative inline-block cursor-pointer'
 			>
 				<span
@@ -34,7 +34,7 @@ export const SingleTodo = ({ id, title, completed }) => {
 				{title}
 			</span>
 			<button
-				onClick={() => dispatch(deleteTodoThunk(id))}
+				onClick={() => deleteTodo(id)}
 				className=' transition-all hidden text-white/20 hover:text-white  group-hover:block mx-auto'
 			>
 				X
