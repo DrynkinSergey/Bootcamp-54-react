@@ -5,7 +5,7 @@ import {
 	deleteTodoThunk,
 	toggleTodoThunk,
 } from '../../redux/todoList/operations'
-export const SingleTodo = ({ id, title, completed }) => {
+export const SingleTodo = ({ id, text, completed }) => {
 	const dispatch = useDispatch()
 
 	const stylesActive = completed
@@ -31,7 +31,7 @@ export const SingleTodo = ({ id, title, completed }) => {
 						: 'transition-all'
 				}
 			>
-				{title}
+				{text}
 			</span>
 			<button
 				onClick={() => dispatch(deleteTodoThunk(id))}

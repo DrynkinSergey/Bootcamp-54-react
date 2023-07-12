@@ -5,6 +5,7 @@ import {
 	fetchTodoThunk,
 	toggleTodoThunk,
 } from './operations'
+import { logoutThunk } from '../auth/operations'
 
 const initialState = {
 	tasks: [],
@@ -35,6 +36,9 @@ const todoSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
+			.addCase(logoutThunk.fulfilled, (state, action) => {
+				state.tasks = []
+			})
 			.addCase(fetchTodoThunk.fulfilled, (state, action) => {
 				state.tasks = action.payload
 				state.loading = false

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import bg from './../../assets/images/bg-desktop-dark.jpg'
 import bgMobile from './../../assets/images/bg-mobile-dark.jpg'
 import { AddForm } from './AddForm'
@@ -8,13 +8,23 @@ import { fetchTodoThunk } from '../../redux/todoList/operations'
 import { Filter } from './Filter'
 import { selectTheme } from '../../redux/todoList/selectors'
 import { toggleTheme } from '../../redux/themeSlice'
+import { selectLoggedIn } from '../../redux/auth/selectors'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export const CuteTodo = () => {
 	const dispatch = useDispatch()
 	const theme = useSelector(selectTheme)
+	const isLoggedIn = useSelector(selectLoggedIn)
+	const navigate = useNavigate()
 	useEffect(() => {
-		dispatch(fetchTodoThunk())
-	}, [dispatch])
+		if (isLoggedIn) {
+			dispatch(fetchTodoThunk())
+		} else {
+			toast.info('Please signin')
+			navigate('/login')
+		}
+	}, [dispatch, isLoggedIn, navigate])
 	const bgImage = useMemo(
 		() => (
 			<>

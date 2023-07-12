@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { registerThunk } from '../redux/auth/operations'
-import { useDispatch, useSelector } from 'react-redux'
+import { loginThunk, registerThunk } from '../redux/auth/operations'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { selectUser, selectUserData } from '../redux/auth/selectors'
+import { toast } from 'react-toastify'
 
-export const RegisterPage = () => {
+export const LoginPage = () => {
 	const dispatch = useDispatch()
-	const user = useSelector(selectUser)
 	const navigate = useNavigate()
 	const [credentials, setCredentials] = useState({
-		name: '',
 		email: '',
 		password: '',
 	})
@@ -20,13 +18,14 @@ export const RegisterPage = () => {
 			[name]: value,
 		}))
 	}
-
 	const handleSubmit = e => {
 		e.preventDefault()
-		console.log(credentials)
-		dispatch(registerThunk(credentials))
+		dispatch(loginThunk(credentials))
 			.unwrap()
-			.then(() => navigate('/todos'))
+			.then(() => {
+				toast.success('Welcome back!')
+				navigate('/todos')
+			})
 	}
 	return (
 		<div className='flex justify-center items-center min-h-screen'>
@@ -34,17 +33,6 @@ export const RegisterPage = () => {
 				onSubmit={handleSubmit}
 				className='flex   rounded-md shadow-md flex-col gap-4 px-8 py-4 border-2 border-black bg-darkMain/70'
 			>
-				<label className='flex flex-col gap-2'>
-					<span>Name</span>
-					<input
-						value={credentials.name}
-						name='name'
-						onChange={handleChangeInput}
-						type='text'
-						placeholder='Enter your name...'
-						className='px-4 py-2 '
-					/>
-				</label>
 				<label className='flex flex-col gap-2'>
 					<span>Email</span>
 					<input
@@ -67,14 +55,12 @@ export const RegisterPage = () => {
 						className='px-4 py-2 '
 					/>
 				</label>
-				<button className='border-2 mt-4 border-white text-white'>
-					Register
-				</button>
+				<button className='border-2 mt-4 border-white text-white'>Login</button>
 				<hr />
 				<h2>
-					If you already have account lets to{' '}
-					<Link className='text-blue-500' to='/login'>
-						Login
+					If you dont have account go to{' '}
+					<Link className='text-blue-500' to='/register'>
+						Register
 					</Link>
 				</h2>
 			</form>

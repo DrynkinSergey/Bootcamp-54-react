@@ -1,15 +1,12 @@
-import axios from 'axios'
-
 import { toast } from 'react-toastify'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-axios.defaults.baseURL = 'https://64abd6919edb4181202ea4d0.mockapi.io'
+import { instance } from '../../config/usersInstance'
 
 export const fetchTodoThunk = createAsyncThunk(
 	'tasks/fetchTodos',
 	async (_, { rejectWithValue, dispatch, getState }) => {
 		try {
-			const { data } = await axios.get('/todos')
+			const { data } = await instance.get('/tasks')
 			return data
 		} catch (error) {
 			console.log(error)
@@ -22,7 +19,7 @@ export const deleteTodoThunk = createAsyncThunk(
 	'tasks/deleteTodo',
 	async (id, { rejectWithValue }) => {
 		try {
-			const { data } = await axios.delete(`/todos/${id}`)
+			const { data } = await instance.delete(`/tasks/${id}`)
 			return data
 		} catch (error) {
 			return rejectWithValue(error.message)
@@ -42,8 +39,8 @@ export const addTodoThunk = createAsyncThunk(
 	'tasks/addTodo',
 	async (todo, { rejectWithValue }) => {
 		try {
-			const { data } = await axios.post('/todos', {
-				title: todo,
+			const { data } = await instance.post('/tasks', {
+				text: todo,
 				completed: false,
 			})
 			return data
@@ -57,7 +54,7 @@ export const toggleTodoThunk = createAsyncThunk(
 	'tasks/toggleTodo',
 	async (todo, { rejectWithValue }) => {
 		try {
-			const { data } = await axios.put(`todos/${todo.id}`, {
+			const { data } = await instance.patch(`tasks/${todo.id}`, {
 				completed: !todo.completed,
 			})
 			return data
