@@ -12,6 +12,7 @@ import { refreshThunk } from './redux/auth/operations'
 import { selectIsRefresh } from './redux/auth/selectors'
 import { InfinitySpin } from 'react-loader-spinner'
 import { toast } from 'react-toastify'
+import { FormikPage } from './pages/FormikPage'
 
 export const App = () => {
 	const dispatch = useDispatch()
@@ -67,6 +68,7 @@ export const App = () => {
 						}
 					/>
 					<Route path='123' element={<Navigate to='/' />} />
+					<Route path='formik' element={<FormikPage />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
