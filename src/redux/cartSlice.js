@@ -9,8 +9,12 @@ const cartSlice = createSlice({
 		addToCart: (state, { payload }) => {
 			state.items.push(payload)
 		},
+		deleteFromCart: (state, { payload }) => {
+			const index = state.items.findIndex(item => item.id === payload)
+			state.items.splice(index, 1)
+		},
 	},
 })
 
-export const { addToCart } = cartSlice.actions
+export const { addToCart, deleteFromCart } = cartSlice.actions
 export const cartReducer = cartSlice.reducer
