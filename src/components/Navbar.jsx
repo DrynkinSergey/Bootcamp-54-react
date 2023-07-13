@@ -18,6 +18,7 @@ export const Navbar = () => {
 			<nav className='flex gap-4 '>
 				<NavLink to='/'>Home</NavLink>
 				<NavLink to='/todos'>Todos</NavLink>
+				<NavLink to='/formik'>Formik</NavLink>
 			</nav>
 			<div>
 				<h1>Hello {user.name}</h1>

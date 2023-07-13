@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { CuteTodo } from './pages/Todo/CuteTodo'
 import { Homepage } from './pages/Homepage'
@@ -11,15 +11,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { refreshThunk } from './redux/auth/operations'
 import { selectIsRefresh } from './redux/auth/selectors'
 import { InfinitySpin } from 'react-loader-spinner'
+import { toast } from 'react-toastify'
 
 export const App = () => {
 	const dispatch = useDispatch()
 	const isRefreshing = useSelector(selectIsRefresh)
 	useEffect(() => {
 		dispatch(refreshThunk())
+			.unwrap()
+			.catch(res => toast.warning(res))
 	}, [dispatch])
 	return isRefreshing ? (
-		<div className=' flex-col bg-darkMain flex justify-center items-center min-h-screen'>
+		<div
+			className={` flex-col ${'bg-darkMain'} flex justify-center items-center min-h-screen`}
+		>
 			<InfinitySpin width='200' color='#a614fa' />
 			<h1 className='text-white/80 font-bold text-2xl'>Loading...</h1>
 		</div>
@@ -53,6 +58,15 @@ export const App = () => {
 						}
 					/>
 					<Route path='*' element={<h1>Page is not found! 404</h1>} />
+					<Route
+						path='about'
+						element={
+							<PrivateRoute>
+								<h1>Page ABOUT</h1>
+							</PrivateRoute>
+						}
+					/>
+					<Route path='123' element={<Navigate to='/' />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

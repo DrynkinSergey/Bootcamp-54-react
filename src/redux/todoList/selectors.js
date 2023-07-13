@@ -24,7 +24,6 @@ export const selectFilteredData = createSelector(
 	[selectTodos, selectFilter],
 
 	(todos, filter) => {
-		console.log('filter')
 		switch (filter) {
 			case 'Active':
 				return todos.filter(task => !task.completed)
@@ -46,7 +45,6 @@ export const selectFilteredData = createSelector(
 // )
 // }
 export const selectUncompletedTodo = createSelector([selectTodos], todos => {
-	console.log('calc')
 	return todos.reduce(
 		(total, currentTodo) => (currentTodo.completed ? total : total + 1),
 		0
