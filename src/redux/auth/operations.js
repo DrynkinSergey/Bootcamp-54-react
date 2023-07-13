@@ -51,3 +51,23 @@ export const logoutThunk = createAsyncThunk(
 		}
 	}
 )
+
+export const refreshThunk = createAsyncThunk(
+	'auth/refresh',
+
+	async (_, { rejectWithValue, getState }) => {
+		const persistedToken = getState().auth.token
+		if (!persistedToken) {
+			return rejectWithValue('Token is not find!')
+		}
+		try {
+			setToken(persistedToken)
+			const { data } = await instance.get('users/me')
+			console.log(data)
+			return data
+		} catch (error) {
+			console.log(error)
+			return rejectWithValue(error.message)
+		}
+	}
+)

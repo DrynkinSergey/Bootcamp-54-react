@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { loginThunk, registerThunk } from '../redux/auth/operations'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { loginThunk } from '../redux/auth/operations'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { selectLoggedIn } from '../redux/auth/selectors'
 
 export const LoginPage = () => {
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
+	const location = useLocation()
+	const isLoggedIn = useSelector(selectLoggedIn)
+	console.log(location)
+
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
@@ -24,8 +28,10 @@ export const LoginPage = () => {
 			.unwrap()
 			.then(() => {
 				toast.success('Welcome back!')
-				navigate('/todos')
 			})
+	}
+	if (isLoggedIn) {
+		return <Navigate to={location.state?.from ?? '/'} />
 	}
 	return (
 		<div className='flex justify-center items-center min-h-screen'>
