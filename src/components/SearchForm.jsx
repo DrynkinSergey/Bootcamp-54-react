@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeFilter } from '../redux/productsSlice'
+import { Button, Stack, TextField } from '@mui/material'
 
 export const SearchForm = () => {
 	const [filter, setFilter] = useState('')
@@ -19,14 +20,25 @@ export const SearchForm = () => {
 	}
 	return (
 		<form onSubmit={handleSubmit}>
-			<input
-				ref={myInputRef}
-				type='text'
-				value={filter}
-				onChange={handleChangeInput}
-				placeholder='Search...'
-			/>
-			<button>Search</button>
+			<Stack
+				direction='row'
+				justifyContent='center'
+				alignItems='center'
+				spacing={4}
+			>
+				<TextField
+					ref={myInputRef}
+					id='standard-basic'
+					sx={{ width: '100%' }}
+					value={filter}
+					onChange={handleChangeInput}
+					label='Search'
+					variant='standard'
+				/>
+				<Button color='primary' type='submit' variant='contained'>
+					Search
+				</Button>
+			</Stack>
 		</form>
 	)
 }
