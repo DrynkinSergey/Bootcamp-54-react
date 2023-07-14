@@ -1,10 +1,10 @@
 import React from 'react'
-import { selectProducts } from '../redux/productsSelector'
+import { selectFiltered, selectProducts } from '../redux/productsSelector'
 import { useSelector } from 'react-redux'
 import { ProductCard } from './ProductCard'
 
 export const ProductList = () => {
-	const products = useSelector(selectProducts)
+	const products = useSelector(selectFiltered)
 	return (
 		<ul>
 			{products.map(product => (

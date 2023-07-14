@@ -5,8 +5,14 @@ const productsSlice = createSlice({
 	name: 'products',
 	initialState: {
 		products: [],
+		filter: '',
 		error: null,
 		loading: false,
+	},
+	reducers: {
+		changeFilter: (state, { payload }) => {
+			state.filter = payload
+		},
 	},
 	extraReducers: builder => {
 		builder.addCase(getProductsThunk.pending, (state, { payload }) => {
@@ -25,3 +31,4 @@ const productsSlice = createSlice({
 })
 
 export const productsReducer = productsSlice.reducer
+export const { changeFilter } = productsSlice.actions
